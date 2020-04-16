@@ -57,7 +57,6 @@ const calcPriceInDolar = () => {
 
 
 const requestHashRate = () => {
-    console.log('haha')
     blockchainController.requestLatestTeraHash(res=>{
         
         currentBlockResult.html(res);
@@ -67,6 +66,22 @@ const requestHashRate = () => {
 const requestTransactionCount = () => {
     blockchainController.requestTransactionsInTheLast24H(res=>{
         transactionsCountResult.html(res);
+    });
+}
+
+const requestAllCurrenciesExchangesRate = () => {
+    blockchainController.requestCurrentAllExchangingRates(res=>{
+        
+        const table = Utils.turnArrayOfObjectsIntoAnHTMLDivTable(Object.keys(res).map(key => {
+             const obj = res[key];
+             const currency = new Currency(key, obj["15m"], obj.last, obj.buy, obj.sell, obj.symbol);
+             return currency;
+        }));
+
+        const currenciesExchangeTableArea = $('#currenciesExchangeTableArea');
+        console.log(table);
+        currenciesExchangeTableArea.append(table);
+        
     });
 }
 
@@ -82,6 +97,7 @@ $(document).ready(()=>{
 
     requestHashRate();
     requestTransactionCount();
+    requestAllCurrenciesExchangesRate();
 
 });
 
