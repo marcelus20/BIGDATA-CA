@@ -3,22 +3,6 @@
 const blockchainController = BlockchainController.getInstance();
 
 
-// blockchainController.requestDifficulty(res=>console.log(res));
-// blockchainController.requestBlockCount(res=>console.log(res));
-// blockchainController.requestCurrentBlockReward(res=>console.log(res));
-// blockchainController.requestTotalBTCInCirculation(res=>console.log(res));
-// blockchainController.requestProbability(res=>console.log(res));
-// blockchainController.requestExpectedTimeOfArrival(res=>console.log(res));
-// blockchainController.requestAddressLookup("1EcH7pHYTHLo3cbdXfkf6e6Zh5JzCPGumc",res=>console.log(res));
-// blockchainController.requestPriceInTheLast24H(res=>console.log(res));
-// blockchainController.requestTransactionInTheLast24H(res=>console.log(res));
-// blockchainController.requestCurrentAllExchangingRates(res=>console.log(res));
-// blockchainController.requestRawBlock("00000000000003823fa3667d833a354a437bdecf725f1358b17f949c991bfe0a",res=>console.log(res));
-// blockchainController.requestLatestBlock(res=>console.log(res));
-
-// blockchainController.requestCurrentPriceInDolar(100,res=>console.log(res));
-
-
 //buttons
 const calcInEuroButton                      = $('#calcInEuroButton');
 const calcInDolarButton                     = $('#calcInDolarButton');
@@ -155,6 +139,28 @@ const requestSpecificBlock                  = () => {
         resultSpecificPreviousBlockHash.html(fullBlock.prevBlockHash);
     });
 }
+const requestMarketCap                      = () => {
+    blockchainController.requestMarketcap(res=>$('#marketCapTitle').html(Number(res)));
+}
+const requestETA                            = () => {
+    blockchainController.requestExpectedTimeOfArrival(res=>$('#etaTitle').html(res));
+}
+const requestProbability                    = () => {
+    blockchainController.requestProbability(res=>$('#probabilityValue').html(res));
+}
+const requestDifficultyRate                 = () => {
+    blockchainController.requestDifficulty(res=>$('#difficultyValue').html(Number(res)));
+}
+const currentBlockReward                    = () => {
+    blockchainController.requestCurrentBlockReward(res=>$('#btcBlockReward').html(res));
+}
+const requestCurrentMinedBlockAmount        = () => {
+    blockchainController.requestBlockCount(res=>$('#minedBlocksAmount').html(res));
+}
+const requestWeighted24HPrice               = () => {
+    blockchainController.requestPriceInTheLast24H(res=>$('#weightedPriceTitle').html(res));
+}
+
 
 
 //Adding the click event listener to calcInEuroButton
@@ -168,6 +174,7 @@ requestWalletInfoButton.on('click', requestAddressInfo);
 
 requestSpecificBlockButton.on('click', requestSpecificBlock);
 
+
 $(document).ready(()=>{
 
     requestHashRate();
@@ -175,6 +182,12 @@ $(document).ready(()=>{
     requestAllCurrenciesExchangesRate();
     requestLatestBlockInfoArea();
     requestCirculation();
-
+    requestMarketCap();
+    requestETA();
+    requestProbability();
+    requestDifficultyRate();
+    currentBlockReward();
+    requestCurrentMinedBlockAmount();
+    requestWeighted24HPrice();
 });
 

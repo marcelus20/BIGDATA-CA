@@ -47,7 +47,7 @@
                 <li><a href="#">Latest block info</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Bitcoin total supply in Circulation</a></li>
-                <!-- <li><a href="#">Transactions amount in the last 24 Hours</a></li> -->
+                <li><a href="#">Last 24 H weighted Price</a></li>
                 <li><a href="#">Info about a spacific block</a></li>
                 <li><a href="#">Bitcoin Market Capitalization</a></li>
                 <li><a href="#">Remaining time for the next block</a></li>
@@ -55,8 +55,7 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Current Difficulty Rate</a></li>
                 <li><a href="#">Current Block Reward</a></li>
-                <li><a href="#">Current Difficulty Rate</a></li>
-                <li><a href="#">Current Amount of mined blocks</a></li>     
+                <li><a href="#">Current Amount of mined blocks</a></li>      
               </ul>
             </li>
           </ul>
@@ -90,7 +89,7 @@
           </div>
         </div>
         <div id="blockHashRate">
-          <h1>Current Block Rate</h1>
+          <h1>Current Block Hash</h1>
           <h3 id="currentBlockRateResult"></h3>
         </div>
         <div id="transactionsIn24H">
@@ -210,6 +209,41 @@
       </div>
     </div>
 
+    <div id="marketCapTab">
+      <h1>Bitcoin Marketcap</h1>
+      <h3 id="marketCapTitle"></h3>
+    </div>
+
+    <div id="remainingTimeForNextBlock">
+      <h1>Expected time of Arival for the next block</h1>
+      <h3 id="etaTitle"></h3>
+    </div>
+
+    <div id="ProbabiliryToValidate">
+      <h1>Probability of finding the the next hash in one attempt</h1>
+      <h3 id="probabilityValue"></h3>
+    </div>
+
+    <div id="difficultyTab">
+      <h1>Current Difficulty Rate To Mine Bitcoin</h1>
+      <h3 id="difficultyValue"></h3>
+    </div>
+
+    <div id="rewardTab">
+      <h1>Current Reward for a mined Bitcoin block</h1>
+      <h3 id="btcBlockReward"></h3>
+    </div>
+
+    <div id="ammountOfMinedBlocks">
+      <h1>Current amount of mined blocks</h1>
+      <h3 id="minedBlocksAmount"></h3>
+    </div>
+
+    <div id="wightedPriceTab">
+      <h1>24 hour weighted price from the largest exchanges</h1>
+      <h3 id="weightedPriceTitle"></h3>
+    </div>
+    
 
 
 
