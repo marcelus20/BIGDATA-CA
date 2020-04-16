@@ -22,10 +22,12 @@ const blockchainController = BlockchainController.getInstance();
 //buttons
 const calcInEuroButton                      = $('#calcInEuroButton');
 const calcInDolarButton                     = $('#calcInDolarButton');
-const requestWalletInfoButton               = $('#requestWalletInfoButton')
+const requestWalletInfoButton               = $('#requestWalletInfoButton');
+const requestSpecificBlockButton            = $('#requestSpecificBlockButton');
 //titles
 const currentBlockResult                    = $('#currentBlockRateResult');
 const transactionsCountResult               = $('#transactionsCountResult');
+const circulationResult                     = $('#circulationResult');
 //Whenever the button calcInEuroButton is pressed, the correspondent BTC value in 
 //EUR will show. 
 const calcPriceInEuro                       = () => {
@@ -123,6 +125,37 @@ const requestLatestBlockInfoArea            = () => {
     })
 }
 
+const requestCirculation                    = () => {
+    blockchainController.requestTotalBTCInCirculation(res=>circulationResult.html(res));
+}
+const requestSpecificBlock                  = () => {
+    const specificBlockHashValue = $('#specificBlockHashValue');
+    blockchainController.requestRawBlock(specificBlockHashValue.val(), res=>{
+        const fullBlock                       = new FullBlock(
+            res.hash, 
+            new Date(res.time * 1000), 
+            res.block_index, 
+            res.height, 
+            res.size, 
+            res.nonce, 
+            res.prev_block,
+        );
+        const resultSpecificBlockHash         = $('#resultSpecificBlockHash');
+        const resultSpecificBlockDateAndTime  = $('#resultSpecificBlockDateAndTime');
+        const resultSpecificIndex             = $('#resultSpecificIndex');
+        const resultSpecificBlockHeight       = $('#resultSpecificBlockHeight');
+        const resultSpecificBlockNonce        = $('#resultSpecificBlockNonce');
+        const resultSpecificPreviousBlockHash = $('#resultSpecificPreviousBlockHash');
+
+        resultSpecificBlockHash.html(fullBlock.hash);
+        resultSpecificBlockDateAndTime.html(fullBlock.time);
+        resultSpecificIndex.html(fullBlock.blockIndex);
+        resultSpecificBlockHeight.html(fullBlock.height);
+        resultSpecificBlockNonce.html(fullBlock.nonce);
+        resultSpecificPreviousBlockHash.html(fullBlock.prevBlockHash);
+    });
+}
+
 
 //Adding the click event listener to calcInEuroButton
 calcInEuroButton.on('click', calcPriceInEuro);
@@ -133,6 +166,7 @@ calcInDolarButton.on('click', calcPriceInDolar);
 //Adding the click event listener to requestWalletInfoButton
 requestWalletInfoButton.on('click', requestAddressInfo);
 
+requestSpecificBlockButton.on('click', requestSpecificBlock);
 
 $(document).ready(()=>{
 
@@ -140,6 +174,7 @@ $(document).ready(()=>{
     requestTransactionCount();
     requestAllCurrenciesExchangesRate();
     requestLatestBlockInfoArea();
+    requestCirculation();
 
 });
 

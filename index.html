@@ -36,7 +36,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <!-- <li><a href="#">Price of Bitcoin in euros</a></li> -->
                 <!-- <li><a href="#">Price of Bitcoin in dolars</a></li> -->
@@ -64,6 +64,8 @@
       </div><!-- /.container-fluid -->
     </nav>
       
+
+    <!--Tabs option of the website-->
 
     <div id="hometab">
       <div id="aboutBitcoin">
@@ -148,7 +150,7 @@
     </div>
 
 
-    <div>
+    <div id="latestBlock">
       <h1>Latest Block Info</h1>
       <div id="latestBlockInfoResultArea">
         <div>
@@ -170,6 +172,44 @@
       </div>
     </div>
 
+    <div id="currentSupply">
+      <h3>Current Bitcoin Supply in circulation</h3>
+      <h4 id="circulationResult"></h4>
+    </div>
+
+    <div id="specificBlock">
+      <h1>Info About a specific block</h1>
+      <h3>You'll need to input the hash of the block eg: 0000000000000000000b10c78af766fe0236905845efd6360a579c72ba3df1e8</h3>
+      <input type="text" id="specificBlockHashValue" placeholder="hash of block">
+      <button id="requestSpecificBlockButton">Submit Hash</button>
+      <div id="specificBlockInfoResultArea">
+        <div>
+          <h4>Block Hash</h4>
+          <h4 id="resultSpecificBlockHash"></h4>
+        </div>
+        <div>
+          <h4>Date and Time</h4>
+          <h4 id="resultSpecificBlockDateAndTime"></h4>
+        </div>
+        <div>
+          <h4>Block Index</h4>
+          <h4 id="resultSpecificIndex"></h4>
+        </div>
+        <div>
+          <h4>Block Height</h4>
+          <h4 id="resultSpecificBlockHeight"></h4>
+        </div>
+        <div>
+          <h4>Nonce</h4>
+          <h4 id="resultSpecificBlockNonce"></h4>
+        </div>
+        <div>
+          <h4>Previous Block Hash</h4>
+          <h4 id="resultSpecificPreviousBlockHash"></h4>
+        </div>
+      </div>
+    </div>
+
 
 
 
@@ -179,6 +219,8 @@
     <script src="js/scripts/Utils.js"></script>
     <script src="js/models/Wallet.js"></script>
     <script src="js/models/Block.js"></script>
+    <script src="js/models/FullBlock.js"></script>
+    <script src="js/models/Transaction.js"></script>
     <script src="js/scripts/index.js"></script>
 </body>
 </html>
