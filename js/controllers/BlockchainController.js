@@ -13,7 +13,7 @@ class BlockchainController{
                 const baseUrl                 = proxyByPassCors + 'https://blockchain.info/';
                 this.difficulty               = baseUrl + 'q/getdifficulty';
                 this.blockCount               = baseUrl + 'q/getblockcount';
-                this.latestTeraHash           = baseUrl + 'q/latesthash';
+                this.latestHash               = baseUrl + 'q/latesthash';
                 this.latestBlock              = baseUrl + 'latestblock'
                 this.currentBlockReward       = baseUrl + 'q/bcperblock';
                 this.totalBTCInCirculation    = baseUrl + 'q/totalbc';
@@ -48,7 +48,7 @@ class BlockchainController{
     }
 
     requestLatestTeraHash(callback){
-        this.requests.get(this.api.getlatestTeraHash, callback);
+        this.requests.get(this.api.latestHash, callback);
     }
 
     requestLatestBlock(callback){
@@ -83,7 +83,7 @@ class BlockchainController{
         this.requests.get(this.api.marketcap, callback);
     }
 
-    requestTransactionInTheLast24H(callback){
+    requestTransactionsInTheLast24H(callback){
         this.requests.get(this.api.transactionsInTheLast24H, callback);
     }
 

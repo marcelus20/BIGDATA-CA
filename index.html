@@ -1,69 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script
-  src="https://code.jquery.com/jquery-3.5.0.js"
-  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
-  crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <head>
+      <script
+    src="https://code.jquery.com/jquery-3.5.0.js"
+    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+    crossorigin="anonymous"></script>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Brand</a>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <!-- <li><a href="#">Price of Bitcoin in euros</a></li> -->
+                <!-- <li><a href="#">Price of Bitcoin in dolars</a></li> -->
+                <li><a href="#">Price of Bitcoin in all exchanges rates</a></li>
+                <li><a href="#">Info about a specific wallet address</a></li>
+                <li role="separator" class="divider"></li>
+                <!-- <li><a href="#">Latest block hash rate</a></li> -->
+                <li><a href="#">Latest block info</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Bitcoin total supply in Circulation</a></li>
+                <!-- <li><a href="#">Transactions amount in the last 24 Hours</a></li> -->
+                <li><a href="#">Info about a spacific block</a></li>
+                <li><a href="#">Bitcoin Market Capitalization</a></li>
+                <li><a href="#">Remaining time for the next block</a></li>
+                <li><a href="#">Probability to validate a block in one attempt</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Current Difficulty Rate</a></li>
+                <li><a href="#">Current Block Reward</a></li>
+                <li><a href="#">Current Difficulty Rate</a></li>
+                <li><a href="#">Current Amount of mined blocks</a></li>     
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+      
+
+    <div id="hometab">
+      <div id="aboutBitcoin">
+       Brief explanation of Bitcoin
       </div>
-  
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Price of Bitcoin in euros</a></li>
-              <li><a href="#">Price of Bitcoin in dolars</a></li>
-              <li><a href="#">Price of Bitcoin in all exchanges rates</a></li>
-              <li><a href="#">Info about a specific wallet address</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Latest block hash rate</a></li>
-              <li><a href="#">Latest block info</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Bitcoin total supply in Circulation</a></li>
-              <li><a href="#">Transactions amount in the last 24 Hours</a></li>
-              <li><a href="#">Info about a spacific block</a></li>
-              <li><a href="#">Bitcoin Market Capitalization</a></li>
-              <li><a href="#">Remaining time for the next block</a></li>
-              <li><a href="#">Probability validate a block in one attempt</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Current Difficulty Rate</a></li>
-              <li><a href="#">Current Block Reward</a></li>
-              <li><a href="#">Current Difficulty Rate</a></li>
-              <li><a href="#">Current Amount of mined blocks</a></li>     
-            </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-    Hello, World
+      <div id="stats">
+        stats div
+        <div id="princeInEuro">
+          <h1>Euro to BTC calculator</h1>
+          <input type="text" placeholder="EUR" id="priceInEuroInputValue">
+          <button id="calcInEuroButton">calculate</button>
+          <div id="priceInEuroResult">
+            <h3 id="priceInEuroResultH3"></h3>
+          </div>
+        </div>
+        <div id="priceInDolars">
+          <h1>Dolar to BTC calculator</h1>
+          <input type="text" placeholder="USD" id="priceInDolarInputValue">
+          <button id="calcInDolarButton">calculate</button>
+          <div id="priceInDolarResult">
+            <h3 id="priceInDolarResultH3"></h3>
+          </div>
+        </div>
+        <div id="blockHashRate">
+          <h1>Current Block Rate</h1>
+          <h3 id="currentBlockRateResult"></h3>
+        </div>
+        <div id="transactionsIn24H">
+          <h1>Transactions in the last 24 H</h1>
+          <h3 id="transactionsCountResult"></h3>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
     <script src="js/scripts/Requests.js"></script>
     <script src="js/controllers/BlockchainController.js"></script>
     <script src="js/scripts/index.js"></script>
