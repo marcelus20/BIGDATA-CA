@@ -24,7 +24,16 @@ class Utils {
             });
             table.append(row);
         });
-        return table;
+        return table;        
+    }
+
+
+    static turnArrayOfStringsIntoHTMLList       = (arrayOfStrings) => {
+        const ul = $(`<ul class="list-group"></ul>`);
+
+        arrayOfStrings.forEach(string=>ul.append(`<li id="${string}"><h4>${string}</h4></li>`));
+
+        return ul;
     }
 
 }

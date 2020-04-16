@@ -103,6 +103,49 @@
       <div id="currenciesExchangeTableArea"></div>
     </div>
 
+    <div id="infoAboutASpecificWalletAddressArea">
+      <h1 id="infoAboutASpecificWalletAddressTitle">Info about a specific wallet</h1>
+      <h4>Insert the address of the wallet you want to retrieve info from</h4>
+      <input type="text" id="walletAddressValue" placeholder="address here">
+      <button id="requestWalletInfoButton">Submit</button>
+      <h3>Wallet Info</h3>
+      <div id="walletInfoResult">
+        <div>
+          <div>
+            <h4>Hash160</h4>
+            <div id="resultHash160"></div>
+          </div>
+          <div>
+            <h4>Address</h4>
+            <div id="resultAddress"></div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h4>Number of Transactions</h4>
+            <div id="resultNumberOfTransactions"></div>
+          </div>
+          <div>
+            <h4>Total Received</h4>
+            <h4 id="resultTotalReceived"></h4>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h4>Total Sent</h4>
+            <h4 id="resultTotalSent"></h4>
+          </div>
+          <div>
+            <h4>Final Balance</h4>
+            <h4 id="resultFinalBalance"></h4>
+          </div>
+        </div>
+        <div>
+          <h4>Transaction Hashes</h4>
+          <div id="resultTransactionsHashes"></div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -111,6 +154,7 @@
     <script src="js/controllers/BlockchainController.js"></script>
     <script src="js/models/Currency.js"></script>
     <script src="js/scripts/Utils.js"></script>
+    <script src="js/models/Wallet.js"></script>
     <script src="js/scripts/index.js"></script>
 </body>
 </html>
