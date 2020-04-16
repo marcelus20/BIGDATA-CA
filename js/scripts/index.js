@@ -108,6 +108,20 @@ const requestAddressInfo                    = () => {
 
     });
 }
+const requestLatestBlockInfoArea            = () => {
+    blockchainController.requestLatestBlock(res=>{
+        const block = new Block(res.hash, new Date(res.time * 1000), res.block_indexes, res.height);
+        const resultBlockHash        = $('#resultBlockHash');
+        const resultBlockDateAndTime = $('#resultBlockDateAndTime');
+        const resultBlockIndex       = $('#resultBlockIndex');
+        const resultBlockHeight      = $('#resultBlockHeight');
+        resultBlockHash.html(block.hash);
+        resultBlockDateAndTime.html(block.time);
+        resultBlockIndex.html(block.blockIndex);
+        resultBlockHeight.html(block.height);
+
+    })
+}
 
 
 //Adding the click event listener to calcInEuroButton
@@ -125,6 +139,7 @@ $(document).ready(()=>{
     requestHashRate();
     requestTransactionCount();
     requestAllCurrenciesExchangesRate();
+    requestLatestBlockInfoArea();
 
 });
 
