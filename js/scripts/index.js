@@ -1,177 +1,214 @@
 
 
-const blockchainController = BlockchainController.getInstance();
-
-
-//buttons
-const calcInEuroButton                      = $('#calcInEuroButton');
-const calcInDolarButton                     = $('#calcInDolarButton');
-const requestWalletInfoButton               = $('#requestWalletInfoButton');
-const requestSpecificBlockButton            = $('#requestSpecificBlockButton');
-//titles
-const currentBlockResult                    = $('#currentBlockRateResult');
-const transactionsCountResult               = $('#transactionsCountResult');
-const circulationResult                     = $('#circulationResult');
-//Whenever the button calcInEuroButton is pressed, the correspondent BTC value in 
-//EUR will show. 
-const calcPriceInEuro                       = () => {
-    const priceInEuroResult = $('#priceInEuroResultH3');
-    const inputValue        = $('#priceInEuroInputValue').val();
-    blockchainController.requestCurrentPriceInEuro(inputValue, res=>{
-        priceInEuroResult.html(res);
-    });
-
-}
-//Whenever the button calcInDolarButton is pressed, the correspondent BTC value in 
-//USD will show. 
-const calcPriceInDolar                      = () => {
-    const priceInDolarResult = $('#priceInDolarResultH3');
-    const inputValue         = $('#priceInDolarInputValue').val();
-    blockchainController.requestCurrentPriceInDolar(inputValue, res=>{
-        priceInDolarResult.html(res);
-    });
-
-}
-const requestHashRate                       = () => {
-    blockchainController.requestLatestTeraHash(res=>{
-        
-        currentBlockResult.html(res);
-    });
-}
-
-const requestTransactionCount               = () => {
-    blockchainController.requestTransactionsInTheLast24H(res=>{
-        transactionsCountResult.html(res);
-    });
-}
-const requestAllCurrenciesExchangesRate     = () => {
-    blockchainController.requestCurrentAllExchangingRates(res=>{
-        
-        const table = Utils.turnArrayOfObjectsIntoAnHTMLDivTable(Object.keys(res).map(key => {
-             const obj = res[key];
-             const currency = new Currency(key, obj["15m"], obj.last, obj.buy, obj.sell, obj.symbol);
-             return currency;
-        }));
-
-        const currenciesExchangeTableArea = $('#currenciesExchangeTableArea');
-        console.log(table);
-        currenciesExchangeTableArea.append(table);
-        
-    });
-}
-const requestAddressInfo                    = () => {
-    const walletAddressValue = $('#walletAddressValue');
-    blockchainController.requestAddressLookup(walletAddressValue.val(), res =>{
-        
-        const wallet = new Wallet(res.hash160, res.address, res.n_tx, res.total_received, res.total_sent, res.final_balance, res.txs.map(t=>t.hash));
-        console.log(wallet);
-        const resultHash160              = $('#resultHash160');
-        const resultAddress              = $('#resultAddress');
-        const resultNumberOfTransactions = $('#resultNumberOfTransactions');
-        const resultTotalReceived        = $('#resultTotalReceived');
-        const resultTotalSent            = $('#resultTotalSent');
-        const resultFinalBalance         = $('#resultFinalBalance');
-        const resultTransactionsHashes   = $('#resultTransactionsHashes');
-
-
-        resultHash160.html(wallet.hash160);
-        resultAddress.html(wallet.address);
-        resultNumberOfTransactions.html(wallet.nTx);
-        resultTotalReceived.html(wallet.totalReceived);
-        resultTotalSent.html(wallet.totalSent);
-        resultFinalBalance.html(wallet.finalBalance);
-        resultTransactionsHashes.append(Utils.turnArrayOfStringsIntoHTMLList(wallet.txs));
-
-        //assign click event handler to each transaction hash
-        wallet.txs.forEach(hash=>{
-        
-            const transactionItemList = $(`#${hash}`);
-            //transactionItemList.on('click', ()=>{});//colapse later on
-            transactionItemList.addClass("pointer highlight")
-
-        });
-
-
-    });
-}
-const requestLatestBlockInfoArea            = () => {
-    blockchainController.requestLatestBlock(res=>{
-        const block = new Block(res.hash, new Date(res.time * 1000), res.block_indexes, res.height);
-        const resultBlockHash        = $('#resultBlockHash');
-        const resultBlockDateAndTime = $('#resultBlockDateAndTime');
-        const resultBlockIndex       = $('#resultBlockIndex');
-        const resultBlockHeight      = $('#resultBlockHeight');
-        resultBlockHash.html(block.hash);
-        resultBlockDateAndTime.html(block.time);
-        resultBlockIndex.html(block.blockIndex);
-        resultBlockHeight.html(block.height);
-
-    })
-}
-
-const requestCirculation                    = () => {
-    blockchainController.requestTotalBTCInCirculation(res=>circulationResult.html(res));
-}
-const requestSpecificBlock                  = () => {
-    const specificBlockHashValue = $('#specificBlockHashValue');
-    blockchainController.requestRawBlock(specificBlockHashValue.val(), res=>{
-        const fullBlock                       = new FullBlock(
-            res.hash, 
-            new Date(res.time * 1000), 
-            res.block_index, 
-            res.height, 
-            res.size, 
-            res.nonce, 
-            res.prev_block,
-        );
-        const resultSpecificBlockHash         = $('#resultSpecificBlockHash');
-        const resultSpecificBlockDateAndTime  = $('#resultSpecificBlockDateAndTime');
-        const resultSpecificIndex             = $('#resultSpecificIndex');
-        const resultSpecificBlockHeight       = $('#resultSpecificBlockHeight');
-        const resultSpecificBlockNonce        = $('#resultSpecificBlockNonce');
-        const resultSpecificPreviousBlockHash = $('#resultSpecificPreviousBlockHash');
-
-        resultSpecificBlockHash.html(fullBlock.hash);
-        resultSpecificBlockDateAndTime.html(fullBlock.time);
-        resultSpecificIndex.html(fullBlock.blockIndex);
-        resultSpecificBlockHeight.html(fullBlock.height);
-        resultSpecificBlockNonce.html(fullBlock.nonce);
-        resultSpecificPreviousBlockHash.html(fullBlock.prevBlockHash);
-    });
-}
-const requestMarketCap                      = () => {
-    blockchainController.requestMarketcap(res=>$('#marketCapTitle').html(Number(res)));
-}
-const requestETA                            = () => {
-    blockchainController.requestExpectedTimeOfArrival(res=>$('#etaTitle').html(res));
-}
-const requestProbability                    = () => {
-    blockchainController.requestProbability(res=>$('#probabilityValue').html(res));
-}
-const requestDifficultyRate                 = () => {
-    blockchainController.requestDifficulty(res=>$('#difficultyValue').html(Number(res)));
-}
-const currentBlockReward                    = () => {
-    blockchainController.requestCurrentBlockReward(res=>$('#btcBlockReward').html(res));
-}
-const requestCurrentMinedBlockAmount        = () => {
-    blockchainController.requestBlockCount(res=>$('#minedBlocksAmount').html(res));
-}
-const requestWeighted24HPrice               = () => {
-    blockchainController.requestPriceInTheLast24H(res=>$('#weightedPriceTitle').html(res));
-}
-
-
-
 
 
 
 $(document).ready(()=>{
 
-    
-    
-        
-    const state                = {
+    const blockchainController = BlockchainController.getInstance();
+
+
+    //buttons
+    const calcInEuroButton                      = $('#calcInEuroButton');
+    const calcInDolarButton                     = $('#calcInDolarButton');
+    const requestWalletInfoButton               = $('#requestWalletInfoButton');
+    const requestSpecificBlockButton            = $('#requestSpecificBlockButton');
+    //titles
+    const currentBlockResult                    = $('#currentBlockRateResult');
+    const transactionsCountResult               = $('#transactionsCountResult');
+    const circulationResult                     = $('#circulationResult');
+    //Whenever the button calcInEuroButton is pressed, the correspondent BTC value in 
+    //EUR will show. 
+    const calcPriceInEuro                       = () => {
+        showSpinner();
+        const priceInEuroResult = $('#priceInEuroResultH3');
+        const inputValue        = $('#priceInEuroInputValue').val();
+        blockchainController.requestCurrentPriceInEuro(inputValue, res=>{
+            priceInEuroResult.html(res);
+            hideSpinner();
+        });
+
+    }
+    //Whenever the button calcInDolarButton is pressed, the correspondent BTC value in 
+    //USD will show. 
+    const calcPriceInDolar                      = () => {
+        showSpinner();
+        const priceInDolarResult = $('#priceInDolarResultH3');
+        const inputValue         = $('#priceInDolarInputValue').val();
+        blockchainController.requestCurrentPriceInDolar(inputValue, res=>{
+            priceInDolarResult.html(res);
+            hideSpinner();
+        });
+
+    }
+    const requestHashRate                       = () => {
+        showSpinner();
+        blockchainController.requestLatestTeraHash(res=>{
+            hideSpinner();
+            currentBlockResult.html(res);
+        });
+    }
+
+    const requestTransactionCount               = () => {
+        showSpinner();
+        blockchainController.requestTransactionsInTheLast24H(res=>{
+            hideSpinner();
+            transactionsCountResult.html(res);
+        });
+    }
+    const requestAllCurrenciesExchangesRate     = () => {
+        showSpinner();
+        blockchainController.requestCurrentAllExchangingRates(res=>{
+            
+            const table = Utils.turnArrayOfObjectsIntoAnHTMLDivTable(Object.keys(res).map(key => {
+                const obj = res[key];
+                const currency = new Currency(key, obj["15m"], obj.last, obj.buy, obj.sell, obj.symbol);
+                return currency;
+            }));
+
+            const currenciesExchangeTableArea = $('#currenciesExchangeTableArea');
+            hideSpinner();
+            currenciesExchangeTableArea.append(table);
+            
+        });
+    }
+    const requestAddressInfo                    = () => {
+        showSpinner();
+        const walletAddressValue = $('#walletAddressValue');
+        blockchainController.requestAddressLookup(walletAddressValue.val(), res =>{
+            
+            const wallet = new Wallet(res.hash160, res.address, res.n_tx, res.total_received, res.total_sent, res.final_balance, res.txs.map(t=>t.hash));
+            console.log(wallet);
+            const resultHash160              = $('#resultHash160');
+            const resultAddress              = $('#resultAddress');
+            const resultNumberOfTransactions = $('#resultNumberOfTransactions');
+            const resultTotalReceived        = $('#resultTotalReceived');
+            const resultTotalSent            = $('#resultTotalSent');
+            const resultFinalBalance         = $('#resultFinalBalance');
+            const resultTransactionsHashes   = $('#resultTransactionsHashes');
+
+
+            resultHash160.html(wallet.hash160);
+            resultAddress.html(wallet.address);
+            resultNumberOfTransactions.html(wallet.nTx);
+            resultTotalReceived.html(wallet.totalReceived);
+            resultTotalSent.html(wallet.totalSent);
+            resultFinalBalance.html(wallet.finalBalance);
+            resultTransactionsHashes.append(Utils.turnArrayOfStringsIntoHTMLList(wallet.txs));
+            hideSpinner();
+
+        });
+    }
+    const requestLatestBlockInfoArea            = () => {
+        showSpinner();
+        blockchainController.requestLatestBlock(res=>{
+            const block = new Block(res.hash, new Date(res.time * 1000), res.block_index, res.height);
+            const resultBlockHash        = $('#resultBlockHash');
+            const resultBlockDateAndTime = $('#resultBlockDateAndTime');
+            const resultBlockIndex       = $('#resultBlockIndex');
+            const resultBlockHeight      = $('#resultBlockHeight');
+            resultBlockHash.html(block.hash);
+            resultBlockDateAndTime.html(block.time);
+            resultBlockIndex.html(block.blockIndex);
+            resultBlockHeight.html(block.height);
+            hideSpinner();
+        })
+    }
+
+    const requestCirculation                    = () => {
+        showSpinner();
+        blockchainController.requestTotalBTCInCirculation(res=>{
+            circulationResult.html(res);
+            hideSpinner();
+        });
+    }
+    const requestSpecificBlock                  = () => {
+        showSpinner();
+        const specificBlockHashValue = $('#specificBlockHashValue');
+        blockchainController.requestRawBlock(specificBlockHashValue.val(), res=>{
+            const fullBlock                       = new FullBlock(
+                res.hash, 
+                new Date(res.time * 1000), 
+                res.block_index, 
+                res.height, 
+                res.size, 
+                res.nonce, 
+                res.prev_block,
+            );
+            const resultSpecificBlockHash         = $('#resultSpecificBlockHash');
+            const resultSpecificBlockDateAndTime  = $('#resultSpecificBlockDateAndTime');
+            const resultSpecificIndex             = $('#resultSpecificIndex');
+            const resultSpecificBlockHeight       = $('#resultSpecificBlockHeight');
+            const resultSpecificBlockNonce        = $('#resultSpecificBlockNonce');
+            const resultSpecificPreviousBlockHash = $('#resultSpecificPreviousBlockHash');
+
+            resultSpecificBlockHash.html(fullBlock.hash);
+            resultSpecificBlockDateAndTime.html(fullBlock.time);
+            resultSpecificIndex.html(fullBlock.blockIndex);
+            resultSpecificBlockHeight.html(fullBlock.height);
+            resultSpecificBlockNonce.html(fullBlock.nonce);
+            resultSpecificPreviousBlockHash.html(fullBlock.prevBlockHash);
+            hideSpinner();
+        });
+    }
+    const requestMarketCap                      = () => {
+        showSpinner();
+        blockchainController.requestMarketcap(res=>{
+            $('#marketCapTitle').html(Number(res));
+            hideSpinner();
+        });
+    }
+    const requestETA                            = () => {
+        showSpinner();
+        blockchainController.requestExpectedTimeOfArrival(res=>{
+            $('#etaTitle').html(res);
+            hideSpinner();
+        });
+    }
+    const requestProbability                    = () => {
+        showSpinner();
+        blockchainController.requestProbability(res=>{
+            $('#probabilityValue').html(res);
+            hideSpinner();
+        });
+    }
+    const requestDifficultyRate                 = () => {
+        showSpinner();
+        blockchainController.requestDifficulty(res=>{
+            $('#difficultyValue').html(Number(res));
+            hideSpinner();
+        });
+    }
+    const currentBlockReward                    = () => {
+        showSpinner();
+        blockchainController.requestCurrentBlockReward(res=>{
+            $('#btcBlockReward').html(res);
+            hideSpinner();
+        });
+    }
+    const requestCurrentMinedBlockAmount        = () => {
+        showSpinner();
+        blockchainController.requestBlockCount(res=>{
+            $('#minedBlocksAmount').html(res);
+            hideSpinner();
+        });
+    }
+    const requestWeighted24HPrice               = () => {
+        showSpinner();
+        blockchainController.requestPriceInTheLast24H(res=>{
+            $('#weightedPriceTitle').html(res)
+            hideSpinner();
+        });
+    }
+
+    const showSpinner                           = () => {
+        show($('#spinnerid'));
+    }
+
+    const hideSpinner                           = () => {
+        hide($('#spinnerid'));
+    }
+    const state                                 = {
         tabs : {
             homeTab           : new Tab($('#hometab')),
             allCurrenciesTab  : new Tab($('#priceInExchangesDate')),
@@ -188,40 +225,40 @@ $(document).ready(()=>{
             minedBlocksTab    : new Tab($('#ammountOfMinedBlocks'))
         }
     }
-    const tool0                = $('#t0');
-    const tool1                = $('#t1');
-    const tool2                = $('#t2');
-    const tool3                = $('#t3');
-    const tool4                = $('#t4');
-    const tool5                = $('#t5');
-    const tool6                = $('#t6');
-    const tool7                = $('#t7');
-    const tool8                = $('#t8');
-    const tool9                = $('#t9');
-    const tool10               = $('#t10');
-    const tool11               = $('#t11');
-    const tool12               = $('#t12');
+    const tool0                                 = $('#t0');
+    const tool1                                 = $('#t1');
+    const tool2                                 = $('#t2');
+    const tool3                                 = $('#t3');
+    const tool4                                 = $('#t4');
+    const tool5                                 = $('#t5');
+    const tool6                                 = $('#t6');
+    const tool7                                 = $('#t7');
+    const tool8                                 = $('#t8');
+    const tool9                                 = $('#t9');
+    const tool10                                = $('#t10');
+    const tool11                                = $('#t11');
+    const tool12                                = $('#t12');
 
-    const constFalsifyAllTabs  = () => {
+    const constFalsifyAllTabs                   = () => {
         const tabs = state.tabs;
         Object.keys(tabs).forEach(key=>tabs[key].show=false);
     }
-    const makeOneTabTrue       = (tab) => {
+    const makeOneTabTrue                        = (tab) => {
         constFalsifyAllTabs();
         tab.show = true;
         render();
     }
-    const hide                 = (element) => {
+    const hide                                  = (element) => {
         try{
             element.addClass('hide');
         }catch(e){
             console.log(element)
         }
     }
-    const show                 = (element) => {
+    const show                                  = (element) => {
         element.removeClass('hide');
     }
-    const render               = () => {
+    const render                                = () => {
         Object.keys(state.tabs).forEach(key=>{
             const tab = state.tabs[key];
             if(tab.show){
@@ -231,54 +268,54 @@ $(document).ready(()=>{
             }
         });
     }
-    const showHomeTab          = () => {
+    const showHomeTab                           = () => {
         requestHashRate();
         requestTransactionCount();
         makeOneTabTrue(state.tabs.homeTab);
     }
-    const showAllCurrenciesTab = () => {
+    const showAllCurrenciesTab                  = () => {
         requestAllCurrenciesExchangesRate();
         makeOneTabTrue(state.tabs.allCurrenciesTab);
     }
-    const showInfoAboutWallet  = () => {
+    const showInfoAboutWallet                   = () => {
         makeOneTabTrue(state.tabs.specificWalletTab);
     }
-    const showLatestBlock      = () => {
+    const showLatestBlock                       = () => {
         requestLatestBlockInfoArea();
         makeOneTabTrue(state.tabs.latestBlockTab);
     }
-    const showCirculation      = () => {
+    const showCirculation                       = () => {
         requestCirculation();
         makeOneTabTrue(state.tabs.currentSupplyTab);
     }
-    const showWeighted24HPrice = () => {
+    const showWeighted24HPrice                  = () => {
         requestWeighted24HPrice();
         makeOneTabTrue(state.tabs.wightedPriceTab);
     }
-    const showSpecificBlock    = () => {
+    const showSpecificBlock                     = () => {
         makeOneTabTrue(state.tabs.specificBlockTab);
     }
-    const showMarketcap        = () => {
+    const showMarketcap                         = () => {
         requestMarketCap();
         makeOneTabTrue(state.tabs.marketCapTab);
     }
-    const showRemainingTab     = () => {
+    const showRemainingTab                      = () => {
         requestETA();
         makeOneTabTrue(state.tabs.remainingTimeTab);
     }
-    const showProbabilityTab   = () => {
+    const showProbabilityTab                    = () => {
         requestProbability();
         makeOneTabTrue(state.tabs.probValidateTab);
     }
-    const showDifficulty       = () => {
+    const showDifficulty                        = () => {
         requestDifficultyRate();
         makeOneTabTrue(state.tabs.difficultyTab)
     }
-    const showBlockReward      = () => {
+    const showBlockReward                       = () => {
         currentBlockReward();
         makeOneTabTrue(state.tabs.rewardTab);
     }
-    const showMinedBlockAmount = () => {
+    const showMinedBlockAmount                  = () => {
         requestCurrentMinedBlockAmount();
         makeOneTabTrue(state.tabs.minedBlocksTab);
     }
@@ -311,7 +348,7 @@ $(document).ready(()=>{
     requestSpecificBlockButton.on('click', requestSpecificBlock);
 
 
-
+    showHomeTab();
 
 });
 

@@ -4,9 +4,9 @@
 
 //TabBluePrint
 class Tab {
-    constructor(element){
+    constructor(element, show = false){
         this.element = element;
-        this.show    = false;
+        this.show    = show;
     }
 
 }
