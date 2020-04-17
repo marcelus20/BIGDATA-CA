@@ -163,31 +163,155 @@ const requestWeighted24HPrice               = () => {
 
 
 
-//Adding the click event listener to calcInEuroButton
-calcInEuroButton.on('click', calcPriceInEuro);
 
-//Adding the click event listener to calcInDolarButton
-calcInDolarButton.on('click', calcPriceInDolar);
-
-//Adding the click event listener to requestWalletInfoButton
-requestWalletInfoButton.on('click', requestAddressInfo);
-
-requestSpecificBlockButton.on('click', requestSpecificBlock);
 
 
 $(document).ready(()=>{
 
-    requestHashRate();
-    requestTransactionCount();
-    requestAllCurrenciesExchangesRate();
-    requestLatestBlockInfoArea();
-    requestCirculation();
-    requestMarketCap();
-    requestETA();
-    requestProbability();
-    requestDifficultyRate();
-    currentBlockReward();
-    requestCurrentMinedBlockAmount();
-    requestWeighted24HPrice();
+    
+    
+        
+    const state                = {
+        tabs : {
+            homeTab           : new Tab($('#hometab')),
+            allCurrenciesTab  : new Tab($('#priceInExchangesDate')),
+            specificWalletTab : new Tab($('#infoAboutASpecificWalletAddressArea')),
+            latestBlockTab    : new Tab($('#latestBlock')),
+            currentSupplyTab  : new Tab($('#currentSupply')),
+            wightedPriceTab   : new Tab($('#wightedPriceTab')),
+            specificBlockTab  : new Tab($('#specificBlock')),
+            marketCapTab      : new Tab($('#marketCapTab')),
+            remainingTimeTab  : new Tab($('#remainingTimeForNextBlock')),
+            probValidateTab   : new Tab($('#ProbabilityToValidate')),
+            difficultyTab     : new Tab($('#difficultyTab')),
+            rewardTab         : new Tab($('#rewardTab')),
+            minedBlocksTab    : new Tab($('#ammountOfMinedBlocks'))
+        }
+    }
+    const tool0                = $('#t0');
+    const tool1                = $('#t1');
+    const tool2                = $('#t2');
+    const tool3                = $('#t3');
+    const tool4                = $('#t4');
+    const tool5                = $('#t5');
+    const tool6                = $('#t6');
+    const tool7                = $('#t7');
+    const tool8                = $('#t8');
+    const tool9                = $('#t9');
+    const tool10               = $('#t10');
+    const tool11               = $('#t11');
+    const tool12               = $('#t12');
+
+    const constFalsifyAllTabs  = () => {
+        const tabs = state.tabs;
+        Object.keys(tabs).forEach(key=>tabs[key].show=false);
+    }
+    const makeOneTabTrue       = (tab) => {
+        constFalsifyAllTabs();
+        tab.show = true;
+        render();
+    }
+    const hide                 = (element) => {
+        try{
+            element.addClass('hide');
+        }catch(e){
+            console.log(element)
+        }
+    }
+    const show                 = (element) => {
+        element.removeClass('hide');
+    }
+    const render               = () => {
+        Object.keys(state.tabs).forEach(key=>{
+            const tab = state.tabs[key];
+            if(tab.show){
+                show(tab.element);
+            }else{
+                hide(tab.element);
+            }
+        });
+    }
+    const showHomeTab          = () => {
+        requestHashRate();
+        requestTransactionCount();
+        makeOneTabTrue(state.tabs.homeTab);
+    }
+    const showAllCurrenciesTab = () => {
+        requestAllCurrenciesExchangesRate();
+        makeOneTabTrue(state.tabs.allCurrenciesTab);
+    }
+    const showInfoAboutWallet  = () => {
+        makeOneTabTrue(state.tabs.specificWalletTab);
+    }
+    const showLatestBlock      = () => {
+        requestLatestBlockInfoArea();
+        makeOneTabTrue(state.tabs.latestBlockTab);
+    }
+    const showCirculation      = () => {
+        requestCirculation();
+        makeOneTabTrue(state.tabs.currentSupplyTab);
+    }
+    const showWeighted24HPrice = () => {
+        requestWeighted24HPrice();
+        makeOneTabTrue(state.tabs.wightedPriceTab);
+    }
+    const showSpecificBlock    = () => {
+        makeOneTabTrue(state.tabs.specificBlockTab);
+    }
+    const showMarketcap        = () => {
+        requestMarketCap();
+        makeOneTabTrue(state.tabs.marketCapTab);
+    }
+    const showRemainingTab     = () => {
+        requestETA();
+        makeOneTabTrue(state.tabs.remainingTimeTab);
+    }
+    const showProbabilityTab   = () => {
+        requestProbability();
+        makeOneTabTrue(state.tabs.probValidateTab);
+    }
+    const showDifficulty       = () => {
+        requestDifficultyRate();
+        makeOneTabTrue(state.tabs.difficultyTab)
+    }
+    const showBlockReward      = () => {
+        currentBlockReward();
+        makeOneTabTrue(state.tabs.rewardTab);
+    }
+    const showMinedBlockAmount = () => {
+        requestCurrentMinedBlockAmount();
+        makeOneTabTrue(state.tabs.minedBlocksTab);
+    }
+
+    tool0.on('click', showHomeTab);
+    tool1.on('click', showAllCurrenciesTab);
+    tool2.on('click', showInfoAboutWallet);
+    tool3.on('click', showLatestBlock);
+    tool4.on('click', showCirculation);
+    tool5.on('click', showWeighted24HPrice);
+    tool6.on('click', showSpecificBlock);
+    tool7.on('click', showMarketcap);
+    tool8.on('click', showRemainingTab);
+    tool9.on('click', showProbabilityTab);
+    tool10.on('click', showDifficulty);
+    tool11.on('click', showBlockReward);
+    tool12.on('click', showMinedBlockAmount);
+    
+    
+    
+    //Adding the click event listener to calcInEuroButton
+    calcInEuroButton.on('click', calcPriceInEuro);
+
+    //Adding the click event listener to calcInDolarButton
+    calcInDolarButton.on('click', calcPriceInDolar);
+
+    //Adding the click event listener to requestWalletInfoButton
+    requestWalletInfoButton.on('click', requestAddressInfo);
+
+    requestSpecificBlockButton.on('click', requestSpecificBlock);
+
+
+
+
 });
 

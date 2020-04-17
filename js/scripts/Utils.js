@@ -6,23 +6,24 @@ class Utils {
 
 
     static turnArrayOfObjectsIntoAnHTMLDivTable = (arrayOfObjects) => {
-        const table = $('<div class="table"></div>');
+        const table = $('<div class="container-fluid"></div>');
         arrayOfObjects.forEach((obj, index) => {
             const keys = Object.keys(obj);
+            
+             if(!table.is(':parent')){
+                 table.append(`<div class="table-header row">${
+                     keys.map(key=>`<div class="table-cell col">${key}</div>`)
+                         .reduce((acc,item)=>acc+item,"")
+                 }</div>`);
+             }
 
-            if(!table.is(':parent')){
-                table.append(`<div class="div-th-row">${
-                    keys.map(key=>`<div class="div-th-cell">${key}</div>`)
-                        .reduce((acc,item)=>acc+item,"")
-                }</div>`);
-            }
 
-
-            const row = $(`<div class="table-row" id="${keys[0]}${index}"></div>`);
-            keys.forEach((key,index_)=>{
-                row.append(`<div class="table-cell" id="${key}${index}x${index_}">${obj[key]}</div>`);
-            });
+            const row = $(`<div class="table-row row" id="${keys[0]}${index}"></div>`);
             table.append(row);
+            keys.forEach((key,index_)=>{
+                row.append(`<div class="table-cell col" id="${key}${index}x${index_}">${obj[key]}</div>`);
+            });
+            
         });
         return table;        
     }
@@ -31,7 +32,7 @@ class Utils {
     static turnArrayOfStringsIntoHTMLList       = (arrayOfStrings) => {
         const ul = $(`<ul class="list-group"></ul>`);
 
-        arrayOfStrings.forEach(string=>ul.append(`<li id="${string}"><h4>${string}</h4></li>`));
+        arrayOfStrings.forEach(string=>ul.append(`<li class="list-group-item" id="${string}"><h4>${string}</h4></li>`));
 
         return ul;
     }

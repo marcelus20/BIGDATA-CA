@@ -10,7 +10,7 @@
       <title>Document</title>
       <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="css/index.css">
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -34,28 +34,28 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="active" id="t0"><a href="#">Home<span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <!-- <li><a href="#">Price of Bitcoin in euros</a></li> -->
                 <!-- <li><a href="#">Price of Bitcoin in dolars</a></li> -->
-                <li><a href="#">Price of Bitcoin in all exchanges rates</a></li>
-                <li><a href="#">Info about a specific wallet address</a></li>
+                <li id="t1"><a href="#">Price of Bitcoin in all exchanges rates</a></li>
+                <li id="t2"><a href="#">Info about a specific wallet address</a></li>
                 <li role="separator" class="divider"></li>
                 <!-- <li><a href="#">Latest block hash rate</a></li> -->
-                <li><a href="#">Latest block info</a></li>
+                <li id="t3"><a href="#">Latest block info</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Bitcoin total supply in Circulation</a></li>
-                <li><a href="#">Last 24 H weighted Price</a></li>
-                <li><a href="#">Info about a spacific block</a></li>
-                <li><a href="#">Bitcoin Market Capitalization</a></li>
-                <li><a href="#">Remaining time for the next block</a></li>
-                <li><a href="#">Probability to validate a block in one attempt</a></li>
+                <li id="t4"><a href="#">Bitcoin total supply in Circulation</a></li>
+                <li id="t5"><a href="#">Last 24 H weighted Price</a></li>
+                <li id="t6"><a href="#">Info about a spacific block</a></li>
+                <li id="t7"><a href="#">Bitcoin Market Capitalization</a></li>
+                <li id="t8"><a href="#">Remaining time for the next block</a></li>
+                <li id="t9"><a href="#">Probability to validate a block in one attempt</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Current Difficulty Rate</a></li>
-                <li><a href="#">Current Block Reward</a></li>
-                <li><a href="#">Current Amount of mined blocks</a></li>      
+                <li id="t10"><a href="#">Current Difficulty Rate</a></li>
+                <li id="t11"><a href="#">Current Block Reward</a></li>
+                <li id="t12"><a href="#">Current Amount of mined blocks</a></li>      
               </ul>
             </li>
           </ul>
@@ -66,180 +66,193 @@
 
     <!--Tabs option of the website-->
 
-    <div id="hometab">
-      <div id="aboutBitcoin">
+    
+    
+    <div id="hometab" class="container hide">
+      <div id="aboutBitcoin" class="row">
        Brief explanation of Bitcoin
       </div>
-      <div id="stats">
-        stats div
-        <div id="princeInEuro">
-          <h1>Euro to BTC calculator</h1>
-          <input type="text" placeholder="EUR" id="priceInEuroInputValue">
-          <button id="calcInEuroButton">calculate</button>
-          <div id="priceInEuroResult">
-            <h3 id="priceInEuroResultH3"></h3>
+      <div id="stats" class="container">
+        <div class="row justify-content-md-center align-items-center">
+          <div class="col">
+            <h1>Euro to BTC calculator</h1>
+            <input type="text" placeholder="EUR" id="priceInEuroInputValue">
+            <button id="calcInEuroButton">calculate</button>
+            <div id="priceInEuroResult">
+              <h3 id="priceInEuroResultH3"></h3>
+            </div>
+          </div>
+          <div class="col">
+            <h1>Dolar to BTC calculator</h1>
+            <input type="text" placeholder="USD" id="priceInDolarInputValue">
+            <button id="calcInDolarButton">calculate</button>
+            <div id="priceInDolarResult">
+              <h3 id="priceInDolarResultH3"></h3>
+            </div>
           </div>
         </div>
-        <div id="priceInDolars">
-          <h1>Dolar to BTC calculator</h1>
-          <input type="text" placeholder="USD" id="priceInDolarInputValue">
-          <button id="calcInDolarButton">calculate</button>
-          <div id="priceInDolarResult">
-            <h3 id="priceInDolarResultH3"></h3>
+        <div class="row justify-content-md-center align-items-center">
+          <div id="blockHashRate">
+            <h1>Current Block Hash</h1>
+            <h3 id="currentBlockRateResult"></h3>
           </div>
         </div>
-        <div id="blockHashRate">
-          <h1>Current Block Hash</h1>
-          <h3 id="currentBlockRateResult"></h3>
-        </div>
-        <div id="transactionsIn24H">
-          <h1>Transactions in the last 24 H</h1>
-          <h3 id="transactionsCountResult"></h3>
+        <div class="row justify-content-md-center align-items-center">
+          <div id="transactionsIn24H">
+            <h1>Transactions in the last 24 H</h1>
+            <h3 id="transactionsCountResult"></h3>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="priceInExchangesDate">
-      <h1 id="priceInExchangeDatesTitle">Price of Bitcoin in all exchanges rates</h1>
-      <div id="currenciesExchangeTableArea"></div>
+    <div id="priceInExchangesDate" class="container hide">
+      <div class="row justify-content-md-center align-items-center">
+        <div class="col">
+          <h1 id="priceInExchangeDatesTitle">Price of Bitcoin in all exchanges rates</h1>
+          <div id="currenciesExchangeTableArea"></div>    
+        </div>
+      </div>  
     </div>
 
-    <div id="infoAboutASpecificWalletAddressArea">
+    <div id="infoAboutASpecificWalletAddressArea" class="container hide">
       <h1 id="infoAboutASpecificWalletAddressTitle">Info about a specific wallet</h1>
       <h4>Insert the address of the wallet you want to retrieve info from</h4>
       <input type="text" id="walletAddressValue" placeholder="address here">
       <button id="requestWalletInfoButton">Submit</button>
       <h3>Wallet Info</h3>
-      <div id="walletInfoResult">
-        <div>
-          <div>
+      <div id="walletInfoResult" class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col">
             <h4>Hash160</h4>
             <div id="resultHash160"></div>
           </div>
-          <div>
+          <div class="col">
             <h4>Address</h4>
             <div id="resultAddress"></div>
           </div>
         </div>
-        <div>
-          <div>
+        <div class="row align-items-center">
+          <div class="col">
             <h4>Number of Transactions</h4>
             <div id="resultNumberOfTransactions"></div>
           </div>
-          <div>
+          <div class="col">
             <h4>Total Received</h4>
             <h4 id="resultTotalReceived"></h4>
           </div>
         </div>
-        <div>
-          <div>
+        <div class="row align-items-center">
+          <div class="col">
             <h4>Total Sent</h4>
             <h4 id="resultTotalSent"></h4>
           </div>
-          <div>
+          <div class="col">
             <h4>Final Balance</h4>
             <h4 id="resultFinalBalance"></h4>
           </div>
         </div>
-        <div>
+        <div  class="row align-items-center">
           <h4>Transaction Hashes</h4>
           <div id="resultTransactionsHashes"></div>
         </div>
       </div>
     </div>
 
-
-    <div id="latestBlock">
+    <div id="latestBlock" class="container hide">
       <h1>Latest Block Info</h1>
-      <div id="latestBlockInfoResultArea">
-        <div>
+      <div id="latestBlockInfoResultArea" class="row">
+        <div class="col">
           <h4>Block Hash</h4>
           <h4 id="resultBlockHash"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Date and Time</h4>
           <h4 id="resultBlockDateAndTime"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Block Index</h4>
           <h4 id="resultBlockIndex"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Block Height</h4>
           <h4 id="resultBlockHeight"></h4>
         </div>
       </div>
     </div>
 
-    <div id="currentSupply">
+    <div id="currentSupply" class="container hide">
       <h3>Current Bitcoin Supply in circulation</h3>
       <h4 id="circulationResult"></h4>
     </div>
 
-    <div id="specificBlock">
-      <h1>Info About a specific block</h1>
-      <h3>You'll need to input the hash of the block eg: 0000000000000000000b10c78af766fe0236905845efd6360a579c72ba3df1e8</h3>
-      <input type="text" id="specificBlockHashValue" placeholder="hash of block">
-      <button id="requestSpecificBlockButton">Submit Hash</button>
-      <div id="specificBlockInfoResultArea">
-        <div>
+    <div id="specificBlock" class="container hide">
+      <div class="row">
+        <h1>Info About a specific block</h1>
+        <h5>You'll need to input the hash of the block eg: 0000000000000000000b10c78af766fe0236905845efd6360a579c72ba3df1e8</h5>
+        <input type="text" id="specificBlockHashValue" placeholder="hash of block">
+        <button id="requestSpecificBlockButton">Submit Hash</button>
+      </div>
+      
+      <div id="specificBlockInfoResultArea" class="row">
+        <div class="col">
           <h4>Block Hash</h4>
           <h4 id="resultSpecificBlockHash"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Date and Time</h4>
           <h4 id="resultSpecificBlockDateAndTime"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Block Index</h4>
           <h4 id="resultSpecificIndex"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Block Height</h4>
           <h4 id="resultSpecificBlockHeight"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Nonce</h4>
           <h4 id="resultSpecificBlockNonce"></h4>
         </div>
-        <div>
+        <div class="col">
           <h4>Previous Block Hash</h4>
           <h4 id="resultSpecificPreviousBlockHash"></h4>
         </div>
       </div>
     </div>
 
-    <div id="marketCapTab">
+    <div id="marketCapTab" class="container hide">
       <h1>Bitcoin Marketcap</h1>
       <h3 id="marketCapTitle"></h3>
     </div>
 
-    <div id="remainingTimeForNextBlock">
+    <div id="remainingTimeForNextBlock" class="container hide">
       <h1>Expected time of Arival for the next block</h1>
       <h3 id="etaTitle"></h3>
     </div>
 
-    <div id="ProbabiliryToValidate">
+    <div id="ProbabilityToValidate" class="container hide">
       <h1>Probability of finding the the next hash in one attempt</h1>
       <h3 id="probabilityValue"></h3>
     </div>
 
-    <div id="difficultyTab">
+    <div id="difficultyTab" class="container hide">
       <h1>Current Difficulty Rate To Mine Bitcoin</h1>
       <h3 id="difficultyValue"></h3>
     </div>
 
-    <div id="rewardTab">
+    <div id="rewardTab" class="container hide">
       <h1>Current Reward for a mined Bitcoin block</h1>
       <h3 id="btcBlockReward"></h3>
     </div>
 
-    <div id="ammountOfMinedBlocks">
+    <div id="ammountOfMinedBlocks" class="container hide">
       <h1>Current amount of mined blocks</h1>
       <h3 id="minedBlocksAmount"></h3>
     </div>
 
-    <div id="wightedPriceTab">
+    <div id="wightedPriceTab" class="container hide">
       <h1>24 hour weighted price from the largest exchanges</h1>
       <h3 id="weightedPriceTitle"></h3>
     </div>
@@ -254,7 +267,7 @@
     <script src="js/models/Wallet.js"></script>
     <script src="js/models/Block.js"></script>
     <script src="js/models/FullBlock.js"></script>
-    <script src="js/models/Transaction.js"></script>
+    <script src="js/models/Tab.js"></script>
     <script src="js/scripts/index.js"></script>
 </body>
 </html>
