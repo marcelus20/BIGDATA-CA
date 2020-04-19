@@ -2,518 +2,547 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
- <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- jQuery library -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Bitcoin</title>
 
-      <!-- Latest compiled JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
 
-</head>
-  <body class="div-container">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active" id="t0"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <!-- <li><a href="#">Price of Bitcoin in euros</a></li> -->
-                <!-- <li><a href="#">Price of Bitcoin in dolars</a></li> -->
-                <li id="t1"><a href="#">Price of Bitcoin in all exchanges rates</a></li>
-                <li id="t2"><a href="#">Info about a specific wallet address</a></li>
-                <li role="separator" class="divider"></li>
-                <!-- <li><a href="#">Latest block hash rate</a></li> -->
-                <li id="t3"><a href="#">Latest block info</a></li>
-                <li role="separator" class="divider"></li>
-                <li id="t4"><a href="#">Bitcoin total supply in Circulation</a></li>
-                <li id="t5"><a href="#">Last 24 H weighted Price</a></li>
-                <li id="t6"><a href="#">Info about a spacific block</a></li>
-                <li id="t7"><a href="#">Bitcoin Market Capitalization</a></li>
-                <li id="t8"><a href="#">Remaining time for the next block</a></li>
-                <li id="t9"><a href="#">Probability to validate a block in one attempt</a></li>
-                <li role="separator" class="divider"></li>
-                <li id="t10"><a href="#">Current Difficulty Rate</a></li>
-                <li id="t11"><a href="#">Current Block Reward</a></li>
-                <li id="t12"><a href="#">Current Amount of mined blocks</a></li>      
-              </ul>
-            </li>
-          </ul>
-    </nav>
-      
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
-    <!--Tabs option of the website-->
+  </head>
+  <body>
+	<div class="spinner hide" id="spinnerid">
+		<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+	
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+				 
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="navbar-toggler-icon"></span>
+				</button> <a class="navbar-brand" href="#">Brand</a>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="navbar-nav">
+						<li class="nav-item active" id="t0">
+							 <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item" id="t1">
+							 <a class="nav-link" href="#">Check price in fiat money</a>
+						</li>
+						<li class="nav-item" id="t2">
+							<a class="nav-link" href="#">Search for a specific wallet</a>
+						</li>
+						<li class="nav-item" id="t3">
+							<a class="nav-link" href="#">Latest Block Details</a>
+						</li>
+						<li class="nav-item" id="t4">
+							<a class="nav-link" href="#">Specific Block Details</a>
+						</li>
+						<li class="nav-item" id="t5">
+							<a class="nav-link" href="#">Misc Network Stats</a>
+					   	</li>      
+					</ul>			
+				</div>
+			</nav>
+			
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8">
+					<!--Home Tab-->
+					<div class="row hometab hide" id="hometab">
+						<div class="col-md-12">
+							<h2>
+								A brief explanation about bitcoin
+							</h2>
+							<p>
+								Bitcoin is an innovative payment network and a new kind of money.
 
-    <div class="spinner hide" id="spinnerid">
-      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </div>
-    
-    
-    <div id="hometab" class="div-container hide">
-      <div id="aboutBitcoin" class="div-row">
-       <div class="div-col">
-         <h1 class="display-1">A Brief explanation of Bitcoin</h1>
-         <p>
-          Bitcoin is an innovative payment network and a new kind of money.
+								Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network. Bitcoin is open-source; its design is public, nobody owns or controls Bitcoin and everyone can take part. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system.
+							</p>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-6">
+											<form id="calcInEuroButton">
+												<div class="form-group">
+													 
+													<label for="exampleInputEmail1">
+														Value in euro
+													</label>
+													<input class="form-control" id="priceInEuroInputValue" placeholder="EUR">
+												</div>
+												<button type="submit" class="btn btn-primary">
+													Submit
+												</button>
+											</form>
+										</div>
+										<div class="col-md-6">
+											 <span class="badge badge-default">BTC</span>
+											 <h4 class="display-4" id="priceInEuroResultH3">0.0</h4>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-6">
+											<form id="calcInDolarButton">
+												<div class="form-group">
+													 
+													<label for="exampleInputEmail1">
+														Value in Dolar
+													</label>
+													<input class="form-control" placeholder="USD" id="priceInDolarInputValue">
+												</div>
+												<button type="submit" class="btn btn-primary">
+													Submit
+												</button>
+											</form>
+										</div>
+										<div class="col-md-6">
+											 <span class="badge badge-default">BTC</span>
+											 <h4 class="display-4" id="priceInDolarResultH3">0.0</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-md-9">
+									 <span class="badge badge-default">Hash of the latest block</span>
+									<dl>
+										<dt>
+											Block Hash
+										</dt>
+										<dd>
+											<svg id="p1" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5 hashrateValue" id="currentBlockRateResult">...Block Hash Here...</h5>
+										</dd>
+										<dt>
+											Explanation
+										</dt>
+										<dd>
+											Every bitcoin transaction is registered to a sort of public ledger. Each ledger 
+											is linked to the previous one, in a sort of chain. The value above discribed represents
+											the current ledger, or also called a block.
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									 <span class="badge badge-default">Transactions amount in the last 24 hours</span>
+									<dl>
+										<dt>
+											Transactions
+										</dt>
+										<dd>
+											<svg id="p2" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5 hashrateValue" id="transactionsCountResult">...Transactions Here...</h5>
+										</dd>
+										<dt>
+											Explanation
+										</dt>
+										<dd>
+											This is the number of transactions processed by the bitcoin network in the last 24 hours
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Exchanges Price Tab-->
+					<div class="row hide" id="priceInExchangesDate">
+						<div class="col-md-12">
+							<h3 class="text-center">
+								Price of Bitcoin many fiat currency
+							</h3>
+							<div class="row">
+								<div class="col-md-12">
+									<p>
+										Bitcoin can be purchased in many so called exchanges out there. Of course the origial idea of bitcoin is 
+										being a peer-to-peer electronic cashing payment system, but some compananies provides the service of 
+										bringing buyers and sellers in one place, which are the exchanges. 
+										As bitcoin has become more popular around the world, there are exchanges spread out the globe. 
+										The table below show the price of Bitcoin in the fiat exchanging rates. 
+									</p>
+									<svg id="p3" class=" pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+										<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+									</svg>
+									<div id="currenciesExchangeTableArea"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Specific Wallet Tab-->
+					<div class="row hide" id="infoAboutASpecificWalletAddressArea">
+						<div class="col-md-12">
+							<h3 class="text-center">
+								Info about a specific wallet
+							</h3>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-2">
+										</div>
+										<div class="col-md-8">
+											<form role="form">
+												<div class="form-group">
+													 
+													<label for="exampleInputEmail1">
+														Wallet Address
+													</label>
+													<input type="text" class="form-control" id="walletAddressValue" placeholder="wallet here">
+												</div> 
+												<button type="submit" class="btn btn-primary" id="requestWalletInfoButton">
+													Search wallet details
+												</button>
+											</form>
+										</div>
+										<div class="col-md-2">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 text-center">
+											 <span class="badge badge-default">Hash160</span>
+											 <h5 class="display-5" id="resultHash160">...</h5>
+											 
+										</div>
+										<div class="col-md-6 text-center">
+											 <span class="badge badge-default">Address</span>
+											 <h5 class="display-5" id="resultAddress">...</h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Total Received</span>
+											 <h5 class="display-5" id="resultTotalReceived">...</h5>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Total Sent</span>
+											 <h5 class="display-5" id="resultTotalSent">...</h5>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Final Balance</span>
+											 <h5 class="display-5" id="resultFinalBalance">...</h5>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Number of Transactions</span>
+											 <h5 class="display-5" id="resultNumberOfTransactions">...</h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-2">
+										</div>
+										<div class="col-md-8 text-center">
+											 <span class="badge badge-default">Transactions Hashes associated with this wallet</span>
+											 <div class="divTableCell" id="resultTransactionsHashes">...</div>
+										</div>
+										<div class="col-md-2">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Latest Block Info-->
+					<div class="row hide" id="latestBlock">
+						<div class="col-md-12">
+							<h3 class="text-center">
+								Latest Block Info
+							</h3>
+							<p>
+								This is more details about the current block of transactions.
+							</p>
+							<svg id="p4" class=" pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+								<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+							</svg>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<div class="row">
+										<div class="col-md-8">
+											 <span class="badge badge-default">Block Hash</span>
+											 <h5 class="display-5" id="resultBlockHash">...</h5>
+										</div>
+										<div class="col-md-4  text-center">
+											 <span class="badge badge-default">Date and Time</span>
+											 <h5 class="display-5" id="resultBlockDateAndTime">...</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+								</div>
+								<div class="col-md-3 text-center">
+									 <span class="badge badge-default">Block Index</span>
+									 <h5 class="display-5" id="resultBlockIndex">...</h5>
+								</div>
+								<div class="col-md-3 text-center">
+									 <span class="badge badge-default">Block Height</span>
+									 <h5 class="display-5" id="resultBlockHeight">...</h5>
+								</div>
+								<div class="col-md-3">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Specific Block Info-->
+					<div class="row hide" id="specificBlock">
+						<div class="col-md-12">
+							<h3 class="text-center">
+								Info about a specific Block
+							</h3>
+							<p>
+								A block is a collenction of transactions performed by the network. Each block stores around 2500 transactions and after it has reached its store limit, it needs to be validated. Validation means that the new hash for this block needs to be discovered and this task is performed by the miners. When the block is validated, this new hash is linked with the next block "previous hash" attribute and here is where the blockchain comes from. The number of zeros in the begining is determined by the difficulty reate. The more defficult the more zeros there will be. In order to discover the hash of the block, there is not a better approach other than brute force combinations of nonces. It works like this:
+							</p>
+							<p>
+								Let the SHA256(currentBlockState) = x.
+							Network will apply the difficulty rate, so x will become 00000000x;
+							Hashing goes one way around, therefore the miner will have to combine SHA256(nonce + currentBlockState);
+							SHA256(0 + currentBlockState) == 00000000x? No. Make nonce 1, is it equals to 00000000x? No, make nonce 2... Until the hash matches.
+							When pressing submit, it may take several seconds to get the information from the API. Please, be patient.
+							</p>
+							<div class="row">
+								<div class="col-md-2">
+								</div>
+								<div class="col-md-8">
+									<form id="requestSpecificBlockButton">
+										<div class="form-group">
+											 
+											<label for="exampleInputEmail1">
+												Block Hash
+											</label>
+											<input type="Text" class="form-control" id="specificBlockHashValue">
+										</div> 
+										<button type="submit" class="btn btn-primary">
+											Search block
+										</button>
+									</form>
+								</div>
+								<div class="col-md-2">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-12 text-center">
+											 <span class="badge badge-default">Block Hash</span>
+											 <h5 class="display-5" id="resultSpecificBlockHash">...</h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center">
+											<span class="badge badge-default">Previous block hash</span>
+											<h5 id="resultSpecificPreviousBlockHash">...</h5>
+									   </div>
+									</div>
+									<div class="row">
+										<div class="col-md-3 text-center">
+											<span class="badge badge-default">Date and Time</span>
+											<h5 id="resultSpecificBlockDateAndTime">...</h5>
+									   </div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Block Index</span>
+											 <h5 class="display-5" id="resultSpecificIndex">...</h5>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Block Height</span>
+											 <h5 class="display-5" id="resultSpecificBlockHeight">...</h5>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Nonce</span>
+											 <h5 class="display-5" id="resultSpecificBlockNonce">...</h5>
+										</div>
+										<!-- <div class="col-md-3 text-center">
+											 <span class="badge badge-default">Label</span>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Stats Tab-->
+					<div class="row hide stats"  id="statsTab">
+						<div class="col-md-12">
+							<h3 class="text-center">
+								Other Bitcoin network stats
+							</h3>
+							<p>
+								Here is some more details about what's going on in the bitcoin network
+							</p>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-3 text-center">
+											<span class="badge badge-default">Total in Circulation</span>
+											<svg id="p5" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5"><span id="circulationResult">...</span> satoshis</h5>
+											 <dl class="hide">
+												<dt>
+													Description
+												</dt>
+												<dd>
+													Here is the current amount of bitcoins circulating in the economy since the cryptocurrency creation in 2009. Every ten minutes the bitcoin inflates in a certain amount of unutis which is explained better in the rewarding tab. The total of bitcoin that will ever exist is of 21 million bitcoins. As the inflation rate of bitcoin decreases every 210 thousand blocks, it is expected to reach the limit supply in the year 2140. The value bellow is presented in satoshi units (1 BTC = 100000000 satoshis).
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">Market Cap in USD</span>
+											 <svg id="p6" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5" id="marketCapTitle">...</h5>
+											<dl class="hide">
+												<dt>
+													Description
+												</dt>
+												<dd>
+													The total amount of bitcoin in circulation times its unit price in dolar. Value below is displayed in dolar
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3 text-center">
+											 <span class="badge badge-default">ETA</span>
+											 <svg  id="p7" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5" id="etaTitle">...</h5>
+											<dl class="hide">
+												<dt>
+													Description
+												</dt>
+												<dd>
+													The algorithm is adjusted to regulate the difficulty rate so that the everage time to mine one blocks keeps neither more nor less than 10 minutes. The more processing power provided by the miners there is, the quicker a hash of the block could be found.
 
-          Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network. Bitcoin is open-source; its design is public, nobody owns or controls Bitcoin and everyone can take part. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system.
-         </p>
-       </div>
-      </div>
-      <div class="div-row calcsDiv">
-        <div class="div-col calculatorsDiv">
-          <div class="div-container">
-            <div class="div-row">
-              <div class="div-col">
-                <h3 class="display-3">Euro to BTC calculator</h1>
-              </div>
-              <div>
-                <div class="div-col">
-                  <div class="div-container">
-                    <div class="div-row">
-                      <div class="div-col">
-                        <input type="text" placeholder="EUR" id="priceInEuroInputValue">
-                      </div>
-                      <div class="div-col">
-                        <button id="calcInEuroButton" class="btn btn-dark">Calculate</button>
-                      </div>
-                    </div>
-                    <div class="div-row">
-                      <div class="div-col">
-                        <h4 class="display-4">Price in BTC:</h4>
-                      </div>
-                      <div class="div-col">
-                        <div id="priceInEuroResult">
-                          <h4 class="display-4" id="priceInEuroResultH3">0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="div-col calculatorsDiv">
-          <div class="div-container">
-            <div class="div-row">
-              <div class="div-col">
-                <h3 class="display-3">Dolar to BTC calculator</h1>
-              </div>
-              <div>
-                <div class="div-col">
-                  <div class="div-container">
-                    <div class="div-row">
-                      <div class="div-col">
-                        <input type="text" placeholder="USD" id="priceInDolarInputValue">
-                      </div>
-                      <div class="div-col">
-                        <button id="calcInDolarButton" class="btn btn-dark">Calculate</button>
-                      </div>
-                    </div>
-                    <div class="div-row">
-                      <div class="div-col">
-                        <h4 class="display-4" >Price in BTC: </h4>
-                      </div>
-                      <div class="div-col">
-                        <div id="priceInDolarResult">
-                          <h4 class="display-4" id="priceInDolarResultH3"></h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="div-row blockHashDiv">
-        <h2 class="display-2">Current Block Hash</h3>
-        <h3 class="display-4 hashrateValue" id="currentBlockRateResult"></h4>
-      </div>
-      <div class="div-row transactions24DIv">
-        <h2 class="display-2">Transactions in the last 24 H</h1>
-        <h3 class="transactions24HValue" id="transactionsCountResult"></h3>
-      </div>
-    </div>
+													For this reason, the algorithm encrease the difficulty reate if there is too many processing power else diminish rate if power is reduced to always keep to ten minutes average.
 
+													The value below means how long for the current block to be mined. If the value is negative, it means that the network is taking more than 10 minutes to mine, hence the algorithm will adjust the difficulty at some point.
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3 text-center">
+											<span class="badge badge-default">Single attempt validation probability</span>
+											<svg  id="p8" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5"><span id="probabilityValue">...</span>%</h5>
+											<dl class="hide">
+												<dt>
+													Description
+												</dt>
+												<dd>
+													The closer to zero the less probable it is to find a hash in one attempt. This means a higher number of nonces will be needed to validate. If you want to learn more about the nonces, visit the "info about specific block" tab.
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3 text-center">
+											<span class="badge badge-default">Amount of mined blocks</span>
+											<svg id="p9" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5"><span id="minedBlocksAmount">...</span> Blocks</h5>
+											<dl class="hide">
+											   <dt>
+												   Description
+											   </dt>
+											   <dd>
+												The amount of blocks mined since the Bitcoin protocol was created. Every around ten minutes a new block is mined. The value below should match the "height" attribute of the latest block.
+											   </dd>
+										   </dl>
+									   	</div>
+									   	<div class="col-md-3 text-center">
+											<span class="badge badge-default">Block Reward</span>
+											<svg id="p10" class=" pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5"><span  id="btcBlockReward">...</span>BTC/Block</h5>
+											<dl class="hide">
+												<dt>
+														Current Reward for a mined Bitcoin block
+												</dt>
+												<dd>
+													The rewarding system is the source of inflation of bitcoin. Every ten minutes, the value below is created and rewared to the miner that could validate the last block before all the other miners. A miner can be a computer, or a group of computer combining resources to increase the chances of validating block before everybody else.
 
-    <div id="priceInExchangesDate" class="container hide">
-      <div class="row justify-content-md-center align-items-center">
-        <div class="col">
-          <h1 id="priceInExchangeDatesTitle">Price of Bitcoin in all exchanges rates</h1>
-          <div id="currenciesExchangeTableArea"></div>    
-        </div>
-      </div>  
-    </div>
+													Back in 2009, when bitcoin was created, the reward was of 50 BTC per block. After 210000 validated blocks, the reward dropped down by half. So, in 2013, the rewarding value went down from 50 BTC/Block to 25 BTC/Block. In 2016 it again dropped to 12.5 BTC/block and it will remain like this until next Halving.
+													
+													The process of dropping down the reward every 210000 blocks (4 years) is called Halving.
+													
+													Next Bitcoin Halving is going to happen in May/2020 and the reward is going down to 6.25 BTC. Because every 4 years the having happens, the inflation rate decreases in time. As the consensus protocol states that the limit is 21 millios of BTC in circulation, the last satoshi is to be mined around in the year 2140.
+												</dd>
+											</dl>
+										</div>
+									   	<div class="col-md-3 text-center">
+											<span class="badge badge-default">Difficulty Rate</span>
+											<svg id="p11" class="pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5" id="difficultyValue"></h5>
+											<dl class="hide">
+												<dt>
+													Description
+												</dt>
+												<dd>
+													A description list is perfect for defining terms.
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3 text-center">
+											<span class="badge badge-default">Last 24 H Weighted Price</span>
+											<svg id="p12" class=" pointer bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+											</svg>
+											<h5 class="display-5"><span id="weightedPriceTitle">...</span>USD</h5>
+											<dl class="hide">
+												<dt>
+													Description
+												</dt>
+												<dd>
+													A description list is perfect for defining terms.
+												</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
-    <div id="infoAboutASpecificWalletAddressArea" class="hide walletTab" >
-      
-      <div class="div-container">
-        <div class="row">
-          <h1 id="infoAboutASpecificWalletAddressTitle">Info about a specific wallet</h1>
-        </div>
-        <div class="div-row addressDiv">
-          <div class="div-container">
-            <div class="div-row">
-              <h4>Insert the address of the wallet you want to retrieve info from</h4>
-            </div>
-            <div class="div-row">
-              <div class="div-container addressForm">
-                <div class="div-row">
-                  <input type="text" id="walletAddressValue" class="addressInput" placeholder="address here">
-                </div>
-                <div class="div-row walletSubmitButton">
-                  <button id="requestWalletInfoButton" class="btn btn-dark">Submit</button>
-                </div>
-              </div>  
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      
-      <h3>Wallet Info</h3>
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            Number of Transactions
-          </div>
-          <div class="divTableHead">
-            Total Received
-          </div>
-          <div class="divTableHead">
-            Total Sent
-          </div>
-          <div class="divTableHead">
-            Final Balance
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h2 class="display-2" id="resultNumberOfTransactions"></h2>
-          </div>
-          <div class="divTableCell">
-            <h2 class="display-2" id="resultTotalReceived"></h2>
-          </div>
-          <div class="divTableCell">
-            <h2 class="display-2" id="resultTotalSent"></h2>
-          </div>
-          <div class="divTableCell">
-            <h2 class="display-2" id="resultFinalBalance"></h2>
-          </div>
-        </div>
-      </div>
+	<!--Bootstrap scripts (Not made by me)-->
+    <script src="js/bootstrap/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="js/bootstrap/scripts.js"></script>
+	
 
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            Hash160
-          </div>
-          <div class="divTableHead">
-            Address
-          </div>
-        </div>
-        <div class="divTableCell">
-          <h4 id="resultHash160"></h4>
-        </div>
-        <div class="divTableCell">
-          <h4 id="resultAddress"></h4>
-        </div>
-      </div>
-      <div  class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            Transaction Hashes
-          </div>
-          <div class="divTableCell" id="resultTransactionsHashes">
-          </div>
-        </div>
-      </div>
-      
-    </div>
-
-    <div id="latestBlock" class="latestBlockTab hide">
-      
-      <h1>Latest Block Info</h1>
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Block Hash</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultBlockHash" class="hashrateValue"></h4>
-          </div>
-        </div>
-      </div>
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Date and Time</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultBlockDateAndTime"></h4>
-          </div>
-        </div>
-      </div>
-
-
-      
-      
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Block Index</h4>
-          </div>
-          <div class="divTableHead">
-            <h4>Block Height</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultBlockIndex"></h4>
-          </div>
-          <div class="divTableCell">
-            <h4 id="resultBlockHeight"></h4>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      
-      
-      
-    </div>
-
-    <div id="currentSupply" class="currentSupplyTab hide">
-      <h2 class="display-2">Current Bitcoin Supply in circulation</h2>
-      <p>
-        Here is the current amount of bitcoins circulating in the economy since the cryptocurrency creation in 2009. Every ten minutes the bitcoin inflates in a certain amount of unutis which is explained better in the rewarding tab. The total of bitcoin that will ever exist is of 21 million bitcoins. As the inflation rate of bitcoin decreases every 210 thousand blocks, it is expected to reach the limit supply in the year 2140. The value bellow is presented in satoshi units (1 BTC = 100000000 satoshis). 
-      </p>
-      <div class="div-row capContainer">
-        <div class="div-col"><h3>Amount: </h3></div>
-        <div class="div-col"><h3><span id="circulationResult"></span> satoshis</h3></div>
-      </div>
-      
-    </div>
-
-    <div id="specificBlock" class="latestBlockTab hide">
-      
-      <h1>Info About a specific block</h1>
-      <p>
-        A block is a collenction of transactions performed by the network. Each block stores around 2500 transactions and after it has reached its store limit, it needs to be validated. 
-        Validation means that the new hash for this block needs to be discovered and this task is performed by the miners.
-         When the block is validated, this new hash is linked with the next block "previous hash" attribute and here is where the blockchain comes from. 
-         The number of zeros in the begining is determined by the difficulty reate. The more defficult the more zeros there will be. 
-         In order to discover the hash of the block, there is not a better approach other than brute force combinations of nonces. It works like this:    
-      </p>
-      <ul>
-        <li>
-          Let the SHA256(currentBlockState) = x. 
-        </li>
-        <li>
-          Network will apply the difficulty rate, so x will become 00000000x;
-        </li>
-        <li>
-          Hashing goes one way around, therefore the miner will have to combine SHA256(nonce + currentBlockState);
-        </li>
-        <li>
-          SHA256(0 + currentBlockState) == 00000000x? No. Make nonce 1, is it equals to 00000000x? No, make nonce 2... Until the hash matches.
-        </li>
-      </ul>
-      <p>
-        <span>When pressing submit, it may take several seconds to get the information from the API. Please, be patient.</span>
-      </p>
-      <div class="div-row addressDiv">
-        <div class="div-container">
-          <div class="div-row">
-            <h4>Insert the block hash to retrieve info from</h4>
-            <h5>You'll need to input the hash of the block eg: 0000000000000000000b10c78af766fe0236905845efd6360a579c72ba3df1e8</h5>
-          </div>
-          <div class="div-row">
-            <div class="div-container addressForm">
-              <div class="div-row">
-                <input type="text" id="specificBlockHashValue" class="addressInput" placeholder="hash of block">
-              </div>
-              <div class="div-row walletSubmitButton">
-                <button id="requestSpecificBlockButton" class="btn btn-dark">Submit Hash</button>  
-              </div>
-            </div>  
-          </div>
-        </div>
-      </div>
-
-
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Block Hash</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultSpecificBlockHash"></h4>
-          </div>
-        </div>
-      </div>
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Date and Time</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultSpecificBlockDateAndTime"></h4>
-          </div>
-        </div>
-      </div>
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Previous block hash</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultSpecificPreviousBlockHash"></h4>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="divTable walletInfoDiv">
-        <div class="divTableHeading">
-          <div class="divTableHead">
-            <h4>Block Index</h4>
-          </div>
-          <div class="divTableHead">
-            <h4>Block Height</h4>
-          </div>
-          <div class="divTableHead">
-            <h4>Nonce</h4>
-          </div>
-        </div>
-        <div class="divTableBody">
-          <div class="divTableCell">
-            <h4 id="resultSpecificIndex"></h4>
-          </div>
-          <div class="divTableCell">
-            <h4 id="resultSpecificBlockHeight"></h4>
-          </div>
-          <div class="divTableCell">
-            <h4 id="resultSpecificBlockNonce"></h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="marketCapTab" class="currentSupplyTab hide">
-      <h1>Bitcoin Marketcap</h1>
-      <p>The total amount of bitcoin in circulation times its unit price in dolar. Value below is displayed in dolar.</p>
-      <div class="div-row ETAcontainer">
-        <div class="div-col"><h3>USD</h3></div>
-        <div class="div-col"><h3 id="marketCapTitle"></h3></div>
-      </div>
-
-    </div>
-
-    <div id="remainingTimeForNextBlock" class="currentSupplyTab hide">
-      <h1>Expected time of Arival for the next block</h1>
-      <p>
-        The algorithm is adjusted to regulate the difficulty rate so that the everage time to mine one blocks keeps neither more nor less than 10 minutes. The more processing power provided by the miners there is, the quicker a hash of the block could be found. 
-      </p>
-      <p>
-        For this reason, the algorithm encrease the difficulty reate if there is too many processing power else diminish rate if power is reduced to always keep to ten minutes average.
-      </p>
-      <p>
-        The value below means how long for the current block to be mined. If the value is negative, it means that the network is taking more than 10 minutes to mine, hence the algorithm will adjust the difficulty at some point.
-      </p>
-      <div class="div-row ETAcontainer">
-        <div class="div-col"><h3>ETA:</h3></div>
-        <div class="div-col"><h3 id="etaTitle"></h3></div>
-      </div>
-      
-    </div>
-
-    <div id="ProbabilityToValidate" class="currentSupplyTab hide">
-      <h1>Probability of finding the the next hash in one attempt</h1>
-
-      <p>The closer to zero the less probable it is to find a hash in one attempt. This means a higher number of nonces will be needed to validate. If you want to learn more about the nonces, visit the "info about specific block" tab.</p>
-
-      <div class="div-row capContainer">
-        <div class="div-col"><h3><span id="probabilityValue"></span>%</h3></div>
-      </div>
-      
-    </div>
-
-    <div id="difficultyTab" class="currentSupplyTab hide">
-      <h1>Current Difficulty Rate To Mine Bitcoin</h1>
-      <p>This is the number of hash rate power is needed to validate a block. It's value is determined by how mauch processing power the network provides and make adjustments (increases and decreases) so that the average time reamins around 10 minutes to mine.</p>
-      <h3 id="difficultyValue"></h3>
-    </div>
-
-    <div id="rewardTab" class="currentSupplyTab hide">
-      <h1>Current Reward for a mined Bitcoin block</h1>
-      <p>
-        The rewarding system is the source of inflation of bitcoin. Every ten minutes, the value below is created and rewared to the miner that could validate the last block before all the other miners. A miner can be a computer, or a group of computer combining resources to increase the chances of validating block before everybody else. 
-      </p>
-      <p>
-        Back in 2009, when bitcoin was created, the reward was of 50 BTC per block. After 210000 validated blocks, the reward dropped down by half. So, in 2013, the rewarding value went down from 50 BTC/Block to 25 BTC/Block. In 2016 it again dropped to 12.5 BTC/block and it will remain like this until next Halving. 
-      </p>
-      <p>
-        The process of dropping down the reward every 210000 blocks (4 years) is called Halving.
-      </p>
-      <p>
-        Next Bitcoin Halving is going to happen in May/2020 and the reward is going down to 6.25 BTC. Because every 4 years the having happens, the inflation rate decreases in time. As the consensus protocol states that the limit is 21 millios of BTC in circulation, the last satoshi is to be mined around in the year 2140.
-      </p>
-      <h3><span  id="btcBlockReward">...</span>BTC/Block</h3>
-    </div>
-
-    <div id="ammountOfMinedBlocks" class="currentSupplyTab hide">
-      <h1>Current amount of mined blocks</h1>
-      <p>The amount of blocks mined since the Bitcoin protocol was created. Every around ten minutes a new block is mined. The value below should match the "height" attribute of the latest block.</p>
-      <h3><span id="minedBlocksAmount">...</span> Blocks</h3>
-    </div>
-
-    <div id="wightedPriceTab" class="currentSupplyTab hide">
-      <h2 class="display-2">24 hour weighted price from the largest exchanges</h2>
-      <p>
-        Price in dolars for the bitcoin traded in the largest crypto exchanges.
-      </p>
-      <h3 id="weightedPriceTitle" class="hashrateValue"></h3>
-    </div>
-    
-
-
-
-    <script src="js/scripts/Requests.js"></script>
+	<!--My own scripts (Made entirely by me)-->
+	<script src="js/scripts/Requests.js"></script>
     <script src="js/controllers/BlockchainController.js"></script>
     <script src="js/models/Currency.js"></script>
     <script src="js/scripts/Utils.js"></script>
@@ -522,6 +551,5 @@
     <script src="js/models/FullBlock.js"></script>
     <script src="js/models/Tab.js"></script>
     <script src="js/scripts/index.js"></script>
-    <link rel="stylesheet" href="css/index.css">
-</body>
+  </body>
 </html>

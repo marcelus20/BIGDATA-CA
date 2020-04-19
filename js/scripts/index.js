@@ -17,12 +17,16 @@ $(document).ready(()=>{
     const currentBlockResult                    = $('#currentBlockRateResult');
     const transactionsCountResult               = $('#transactionsCountResult');
     const circulationResult                     = $('#circulationResult');
+    //const statsTab                              = $('#statsTab');
     //Whenever the button calcInEuroButton is pressed, the correspondent BTC value in 
     //EUR will show. 
-    const calcPriceInEuro                       = () => {
+    const calcPriceInEuro                       = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         showSpinner();
         const priceInEuroResult = $('#priceInEuroResultH3');
         const inputValue        = $('#priceInEuroInputValue').val();
+
         blockchainController.requestCurrentPriceInEuro(inputValue, res=>{
             priceInEuroResult.html(res);
             hideSpinner();
@@ -31,7 +35,9 @@ $(document).ready(()=>{
     }
     //Whenever the button calcInDolarButton is pressed, the correspondent BTC value in 
     //USD will show. 
-    const calcPriceInDolar                      = () => {
+    const calcPriceInDolar                      = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         showSpinner();
         const priceInDolarResult = $('#priceInDolarResultH3');
         const inputValue         = $('#priceInDolarInputValue').val();
@@ -51,8 +57,10 @@ $(document).ready(()=>{
 
     const requestTransactionCount               = () => {
         showSpinner();
+        
         blockchainController.requestTransactionsInTheLast24H(res=>{
             hideSpinner();
+            console.log(res);
             transactionsCountResult.html(res);
         });
     }
@@ -122,7 +130,9 @@ $(document).ready(()=>{
             hideSpinner();
         });
     }
-    const requestSpecificBlock                  = () => {
+    const requestSpecificBlock                  = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         showSpinner();
         const specificBlockHashValue = $('#specificBlockHashValue');
         blockchainController.requestRawBlock(specificBlockHashValue.val(), res=>{
@@ -214,16 +224,11 @@ $(document).ready(()=>{
             allCurrenciesTab  : new Tab($('#priceInExchangesDate')),
             specificWalletTab : new Tab($('#infoAboutASpecificWalletAddressArea')),
             latestBlockTab    : new Tab($('#latestBlock')),
-            currentSupplyTab  : new Tab($('#currentSupply')),
-            wightedPriceTab   : new Tab($('#wightedPriceTab')),
+            statsTab          : new Tab($('#statsTab')),
             specificBlockTab  : new Tab($('#specificBlock')),
-            marketCapTab      : new Tab($('#marketCapTab')),
-            remainingTimeTab  : new Tab($('#remainingTimeForNextBlock')),
-            probValidateTab   : new Tab($('#ProbabilityToValidate')),
-            difficultyTab     : new Tab($('#difficultyTab')),
-            rewardTab         : new Tab($('#rewardTab')),
-            minedBlocksTab    : new Tab($('#ammountOfMinedBlocks'))
+            
         }
+        
     }
     const tool0                                 = $('#t0');
     const tool1                                 = $('#t1');
@@ -284,69 +289,103 @@ $(document).ready(()=>{
         requestLatestBlockInfoArea();
         makeOneTabTrue(state.tabs.latestBlockTab);
     }
-    const showCirculation                       = () => {
-        requestCirculation();
-        makeOneTabTrue(state.tabs.currentSupplyTab);
-    }
-    const showWeighted24HPrice                  = () => {
-        requestWeighted24HPrice();
-        makeOneTabTrue(state.tabs.wightedPriceTab);
-    }
     const showSpecificBlock                     = () => {
         makeOneTabTrue(state.tabs.specificBlockTab);
     }
-    const showMarketcap                         = () => {
+
+    const showNetStats                          = () => {
         requestMarketCap();
-        makeOneTabTrue(state.tabs.marketCapTab);
-    }
-    const showRemainingTab                      = () => {
         requestETA();
-        makeOneTabTrue(state.tabs.remainingTimeTab);
-    }
-    const showProbabilityTab                    = () => {
         requestProbability();
-        makeOneTabTrue(state.tabs.probValidateTab);
-    }
-    const showDifficulty                        = () => {
         requestDifficultyRate();
-        makeOneTabTrue(state.tabs.difficultyTab)
-    }
-    const showBlockReward                       = () => {
         currentBlockReward();
-        makeOneTabTrue(state.tabs.rewardTab);
-    }
-    const showMinedBlockAmount                  = () => {
         requestCurrentMinedBlockAmount();
-        makeOneTabTrue(state.tabs.minedBlocksTab);
+        requestCirculation();
+        requestWeighted24HPrice();
+        makeOneTabTrue(state.tabs.statsTab);
+    }
+    
+    
+    const pointer1                             = $('#p1');
+    const pointer2                             = $('#p2');
+    const pointer3                             = $('#p3');
+    const pointer4                             = $('#p4');
+    const pointer5                             = $('#p5');
+    const pointer6                             = $('#p6');
+    const pointer7                             = $('#p7');
+    const pointer8                             = $('#p8');
+    const pointer9                             = $('#p9');
+    const pointer10                            = $('#p10');
+    const pointer11                            = $('#p11');
+    const pointer12                            = $('#p12');
+
+    pointer1.hover(()=>increasePointer(pointer1), ()=>decreasePointer(pointer1));
+    pointer1.click(requestHashRate)
+    pointer2.hover(()=>increasePointer(pointer2), ()=>decreasePointer(pointer2));
+    pointer2.click(requestTransactionCount);
+    pointer3.hover(()=>increasePointer(pointer3), ()=>decreasePointer(pointer3));
+    pointer3.click(requestAllCurrenciesExchangesRate);
+    pointer4.hover(()=>increasePointer(pointer4), ()=>decreasePointer(pointer4));
+    pointer4.click(requestLatestBlockInfoArea)
+    pointer5.hover(()=>increasePointer(pointer5), ()=>decreasePointer(pointer5));
+    pointer5.click(requestCirculation);
+    pointer6.hover(()=>increasePointer(pointer6), ()=>decreasePointer(pointer6));
+    pointer6.click(requestMarketCap);
+    pointer7.hover(()=>increasePointer(pointer7), ()=>decreasePointer(pointer7));
+    pointer7.click(requestETA);
+    pointer8.hover(()=>increasePointer(pointer8), ()=>decreasePointer(pointer8));
+    pointer8.click(requestProbability);
+    pointer9.hover(()=>increasePointer(pointer9), ()=>decreasePointer(pointer9));
+    pointer9.click(requestCurrentMinedBlockAmount);
+    pointer10.hover(()=>increasePointer(pointer10), ()=>decreasePointer(pointer10));
+    pointer10.click(requestDifficultyRate);
+    pointer11.hover(()=>increasePointer(pointer11), ()=>decreasePointer(pointer11));
+    pointer11.click(requestWeighted24HPrice);
+    pointer12.hover(()=>increasePointer(pointer12), ()=>decreasePointer(pointer12));
+
+    
+
+
+
+    const increasePointer                       = (pointer) => {
+        pointer.width("2em").height("2em")
+    }
+
+    const decreasePointer                       = (pointer) => {
+        pointer.width("1em").height("1em")
     }
 
     tool0.on('click', showHomeTab);
     tool1.on('click', showAllCurrenciesTab);
     tool2.on('click', showInfoAboutWallet);
     tool3.on('click', showLatestBlock);
-    tool4.on('click', showCirculation);
-    tool5.on('click', showWeighted24HPrice);
-    tool6.on('click', showSpecificBlock);
-    tool7.on('click', showMarketcap);
-    tool8.on('click', showRemainingTab);
-    tool9.on('click', showProbabilityTab);
-    tool10.on('click', showDifficulty);
-    tool11.on('click', showBlockReward);
-    tool12.on('click', showMinedBlockAmount);
+    tool4.on('click', showSpecificBlock);//showCirculation);
+    tool5.on('click', showNetStats);//showWeighted24HPrice);
+    // tool6.on('click', showSpecificBlock);
+    // tool7.on('click', showMarketcap);
+    // tool8.on('click', showRemainingTab);
+    // tool9.on('click', showProbabilityTab);
+    // tool10.on('click', showDifficulty);
+    // tool11.on('click', showBlockReward);
+    // tool12.on('click', showMinedBlockAmount);
     
     
     
     //Adding the click event listener to calcInEuroButton
-    calcInEuroButton.on('click', calcPriceInEuro);
+    calcInEuroButton.submit(calcPriceInEuro);
 
     //Adding the click event listener to calcInDolarButton
-    calcInDolarButton.on('click', calcPriceInDolar);
+    calcInDolarButton.submit(calcPriceInDolar);
 
     //Adding the click event listener to requestWalletInfoButton
     requestWalletInfoButton.on('click', requestAddressInfo);
 
-    requestSpecificBlockButton.on('click', requestSpecificBlock);
+    requestSpecificBlockButton.submit(requestSpecificBlock);
 
+
+    
+    
+    
 
     showHomeTab();
 

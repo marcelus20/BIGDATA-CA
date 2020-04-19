@@ -9,22 +9,22 @@ class BlockchainController{
         this.requests = new Requests();
         this.api = new class{
             constructor(){
-                const proxyByPassCors         = 'https://cors-anywhere.herokuapp.com/';
-                const baseUrl                 = proxyByPassCors + 'https://blockchain.info/';
-                this.difficulty               = baseUrl + 'q/getdifficulty';
-                this.blockCount               = baseUrl + 'q/getblockcount';
-                this.latestHash               = baseUrl + 'q/latesthash';
-                this.latestBlock              = baseUrl + 'latestblock'
-                this.currentBlockReward       = baseUrl + 'q/bcperblock';
-                this.totalBTCInCirculation    = baseUrl + 'q/totalbc';
+                //const proxyByPassCors         = 'https://cors-anywhere.herokuapp.com/';
+                const baseUrl                 = 'https://blockchain.info/';
+                this.difficulty               = baseUrl + 'q/getdifficulty?cors=true';
+                this.blockCount               = baseUrl + 'q/getblockcount?cors=true';
+                this.latestHash               = baseUrl + 'q/latesthash?cors=true';
+                this.latestBlock              = baseUrl + 'latestblock?cors=true'
+                this.currentBlockReward       = baseUrl + 'q/bcperblock?cors=true';
+                this.totalBTCInCirculation    = baseUrl + 'q/totalbc?cors=true';
                 this.probability              = baseUrl + 'q/probability';
-                this.eta                      = baseUrl + 'q/eta';
-                this.priceInTheLast24H        = baseUrl + 'q/24hrprice';
-                this.marketcap                = baseUrl + 'q/marketcap';
-                this.transactionsInTheLast24H = baseUrl + 'q/24hrtransactioncount'; 
-                this.currentAllExchanginRates = baseUrl + 'ticker';
-                this.rawBlock                 = (blockHash)    => baseUrl + 'rawblock/' + blockHash;
-                this.addressLookup            = (address)      => baseUrl + 'rawaddr/' + address;
+                this.eta                      = baseUrl + 'q/eta?cors=true';
+                this.priceInTheLast24H        = baseUrl + 'q/24hrprice?cors=true';
+                this.marketcap                = baseUrl + 'q/marketcap?cors=true';
+                this.transactionsInTheLast24H = baseUrl + 'q/24hrtransactioncount?cors=true'; 
+                this.currentAllExchanginRates = baseUrl + 'ticker?cors=true';
+                this.rawBlock                 = (blockHash)    => baseUrl + 'rawblock/' + blockHash + "?cors=true";
+                this.addressLookup            = (address)      => baseUrl + 'rawaddr/' + address + "?cors=true";
                 this.currentPriceInDolar      = (valueInDolar) => baseUrl + 'tobtc?currency=USD&value=' + valueInDolar;
                 this.currentPriceInEuro       = (valueInEuro)  => baseUrl + 'tobtc?currency=EUR&value=' + valueInEuro;
             }
