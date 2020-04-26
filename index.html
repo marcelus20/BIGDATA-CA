@@ -15,6 +15,19 @@
 
   </head>
   <body>
+	  <!--Warning allert for error handling-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-warning hide" id="alertArea">
+					<h4>
+						Oh, snap!
+					</h4> <strong>Something went wrong. Connection or API might be down</strong>  
+					<p id="alertMessage"></p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="spinner hide" id="spinnerid">
 		<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 	</div>
@@ -329,8 +342,13 @@
 									<li class="list-group-item">0000000000000000000fd95b95ee2488fe5489c79fcdaec09202c65ad21819e9</li>
 									<li class="list-group-item">0000000000000000000a6fd08067daa57d0c958695d3bfde80cb3742a0e3fbc2</li>
 									<li class="list-group-item">0000000000000000000510e99ca714e2464dcbda1d853e1db30a8538deb127b3</li>
+									<li class="list-group-item">Genesis block - 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</li>
+									
 								</ul>
 							</p>
+							<div class="alert alert-warning">
+								<h4>Please, be patient. Depending on the block size, it may take a while to load info.</h4>
+							</div>
 							<div class="row">
 								<div class="col-md-2">
 								</div>

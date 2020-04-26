@@ -2,7 +2,7 @@
 
 
 
-//TabBluePrint
+//Tab of the navbar Blueprint
 class Tab {
     constructor(element, show = false){
         this.element = element;

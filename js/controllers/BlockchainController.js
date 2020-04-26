@@ -1,12 +1,24 @@
 
 
-
+/**
+ * Class responsible for sending request to the Blockchain.info API
+ * I've made this a singleton
+ */
 class BlockchainController{
 
+    /**
+     * Singleton Instance
+     */
     static instance = null;
 
     constructor(){
+        /**
+         * The request instance for sending requests
+         */
         this.requests = new Requests();
+        /**
+         * Collection of the API features.
+         */
         this.api = new class{
             constructor(){
                 //const proxyByPassCors         = 'https://cors-anywhere.herokuapp.com/';
@@ -39,72 +51,138 @@ class BlockchainController{
     }
 
 
-    requestDifficulty(callback){
-        this.requests.get(this.api.difficulty, callback);
+    /**
+     * Retrieves the difficulty rate from the API
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestDifficulty(callback, callback2){
+        this.requests.get(this.api.difficulty, callback, callback2);
     }
-
-    requestBlockCount(callback){
-        this.requests.get(this.api.blockCount, callback);
+    /**
+     * Retrieves the Amount of blocks mined so far
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestBlockCount(callback, callback2){
+        this.requests.get(this.api.blockCount, callback, callback2);
     }
-
-    requestLatestTeraHash(callback){
-        this.requests.get(this.api.latestHash, callback);
+    /**
+     * Retrieves the lates block hash
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestLatestTeraHash(callback, callback2){
+        this.requests.get(this.api.latestHash, callback, callback2);
     }
-
-    requestLatestBlock(callback){
-        this.requests.get(this.api.latestBlock, callback)
+    /**
+     * Retrieves the latest block details
+     * @param {Function} callback //success handling 
+     * @param {Function} callback2 //error handling
+     */
+    requestLatestBlock(callback, callback2){
+        this.requests.get(this.api.latestBlock, callback, callback2)
     }
-
-    requestCurrentBlockReward(callback){
-        this.requests.get(this.api.currentBlockReward, callback);
+    /**
+     * Retrieves the current block reward
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestCurrentBlockReward(callback, callback2){
+        this.requests.get(this.api.currentBlockReward, callback, callback2);
     }
-
-    requestTotalBTCInCirculation(callback){
-        this.requests.get(this.api.totalBTCInCirculation, callback);
+    /**
+     * Retrieves the total of bitcoin in the network economy. 
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestTotalBTCInCirculation(callback, callback2){
+        this.requests.get(this.api.totalBTCInCirculation, callback, callback2);
     }
-
-    requestProbability(callback){
-        this.requests.get(this.api.probability, callback);
+    /**
+     * Retrieves the probability of mining one block in one attempt. 
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestProbability(callback, callback2){
+        this.requests.get(this.api.probability, callback, callback2);
     }
-
-    requestExpectedTimeOfArrival(callback){
-        this.requests.get(this.api.eta, callback);
+    /**
+     * Retrieves the expected time of arrival of the next block
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestExpectedTimeOfArrival(callback, callback2){
+        this.requests.get(this.api.eta, callback, callback2);
     }
-
-    requestAddressLookup(address, callback){
-        this.requests.get(this.api.addressLookup(address), callback);
+    /**
+     * Retrives details of a specific wallet
+     * @param {String} address 
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestAddressLookup(address, callback, callback2){
+        this.requests.get(this.api.addressLookup(address), callback, callback2);
     }
-
-    requestPriceInTheLast24H(callback){
-        this.requests.get(this.api.priceInTheLast24H, callback);
+    /**
+     * Retrieves the weighed price in the last 24 hours in USD
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestPriceInTheLast24H(callback, callback2){
+        this.requests.get(this.api.priceInTheLast24H, callback, callback2);
     }
-
-    requestMarketcap(callback){
-        this.requests.get(this.api.marketcap, callback);
+    /**
+     * Request the current BTC market cap in USD
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestMarketcap(callback, callback2){
+        this.requests.get(this.api.marketcap, callback, callback2);
     }
-
-    requestTransactionsInTheLast24H(callback){
-        this.requests.get(this.api.transactionsInTheLast24H, callback);
+    /**
+     * Request the amount of transactions in the last 24 hours
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestTransactionsInTheLast24H(callback, callback2){
+        this.requests.get(this.api.transactionsInTheLast24H, callback, callback2);
     }
-
-    requestCurrentAllExchangingRates(callback){
-        this.requests.get(this.api.currentAllExchanginRates, callback);
+    /**
+     * Request the table of the bitcoin price in fiat (real world) money.
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestCurrentAllExchangingRates(callback, callback2){
+        this.requests.get(this.api.currentAllExchanginRates, callback, callback2);
     }
-
-    requestRawBlock(blockHash, callback){
-        this.requests.get(this.api.rawBlock(blockHash), callback);
+    /**
+     * Request details of a specific block in the blockchain
+     * @param {String} blockHash 
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestRawBlock(blockHash, callback, callback2){
+        this.requests.get(this.api.rawBlock(blockHash), callback, callback2);
     }
-
-    requestCurrentPriceInDolar(valueInDolar,callback){
-        this.requests.get(this.api.currentPriceInDolar(valueInDolar), callback);
+    /**
+     * Request the equivalent dolar value in bitcoin
+     * @param {String} valueInDolar 
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestCurrentPriceInDolar(valueInDolar,callback, callback2){
+        this.requests.get(this.api.currentPriceInDolar(valueInDolar), callback, callback2);
     }
-
-    requestCurrentPriceInEuro(valueInEuro, callback){
-        this.requests.get(this.api.currentPriceInEuro(valueInEuro), callback);
+    /**
+     * Request the equivalent euro value in bitcoin
+     * @param {String} valueInEuro 
+     * @param {Function} callback //success handling
+     * @param {Function} callback2 //error handling
+     */
+    requestCurrentPriceInEuro(valueInEuro, callback, callback2){
+        this.requests.get(this.api.currentPriceInEuro(valueInEuro), callback, callback2);
     }
-
-
-
 
 }
 
