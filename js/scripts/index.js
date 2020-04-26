@@ -74,9 +74,9 @@ $(document).ready(()=>{
                 return currency;
             }));
 
-            const currenciesExchangeTableArea = $('#currenciesExchangeTableArea');
+            const currenciesExchangeTableArea = $('#currenciesExchangeTableArea').html(``);
             hideSpinner();
-            currenciesExchangeTableArea.append(table);
+            currenciesExchangeTableArea.html(table);
             
         });
     }
@@ -94,6 +94,7 @@ $(document).ready(()=>{
             const resultTotalSent            = $('#resultTotalSent');
             const resultFinalBalance         = $('#resultFinalBalance');
             const resultTransactionsHashes   = $('#resultTransactionsHashes');
+            resultTransactionsHashes.html('');
 
 
             resultHash160.html(wallet.hash160);

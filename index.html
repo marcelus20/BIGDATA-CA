@@ -202,6 +202,14 @@
 													<label for="exampleInputEmail1">
 														Wallet Address
 													</label>
+													<p>
+														Example of wallets: 
+													</p>
+													<ul class="list-group">
+														<li class="list-group-item">1QFWvE3MgAuFiXu1AsS9ofqvtZyRBDVA2E</li>
+														<li class="list-group-item">19FxiLPUTJWeZNNamRfcXXYLyD6AQRFhsF</li>
+														<li class="list-group-item">1EcH7pHYTHLo3cbdXfkf6e6Zh5JzCPGumc</li>
+													</ul>
 													<input type="text" class="form-control" id="walletAddressValue" placeholder="wallet here">
 												</div> 
 												<button type="submit" class="btn btn-primary" id="requestWalletInfoButton">
@@ -226,15 +234,15 @@
 									<div class="row">
 										<div class="col-md-3 text-center">
 											 <span class="badge badge-default">Total Received</span>
-											 <h5 class="display-5" id="resultTotalReceived">...</h5>
+											 <h5 class="display-5"><span id="resultTotalReceived">...</span> satoshis</h5>
 										</div>
 										<div class="col-md-3 text-center">
 											 <span class="badge badge-default">Total Sent</span>
-											 <h5 class="display-5" id="resultTotalSent">...</h5>
+											 <h5 class="display-5"><span id="resultTotalSent">...</span> satoshis</h5>
 										</div>
 										<div class="col-md-3 text-center">
 											 <span class="badge badge-default">Final Balance</span>
-											 <h5 class="display-5" id="resultFinalBalance">...</h5>
+											 <h5 class="display-5"><span id="resultFinalBalance">...</span> satoshis</h5>
 										</div>
 										<div class="col-md-3 text-center">
 											 <span class="badge badge-default">Number of Transactions</span>
@@ -308,11 +316,20 @@
 								A block is a collenction of transactions performed by the network. Each block stores around 2500 transactions and after it has reached its store limit, it needs to be validated. Validation means that the new hash for this block needs to be discovered and this task is performed by the miners. When the block is validated, this new hash is linked with the next block "previous hash" attribute and here is where the blockchain comes from. The number of zeros in the begining is determined by the difficulty reate. The more defficult the more zeros there will be. In order to discover the hash of the block, there is not a better approach other than brute force combinations of nonces. It works like this:
 							</p>
 							<p>
-								Let the SHA256(currentBlockState) = x.
-							Network will apply the difficulty rate, so x will become 00000000x;
-							Hashing goes one way around, therefore the miner will have to combine SHA256(nonce + currentBlockState);
-							SHA256(0 + currentBlockState) == 00000000x? No. Make nonce 1, is it equals to 00000000x? No, make nonce 2... Until the hash matches.
-							When pressing submit, it may take several seconds to get the information from the API. Please, be patient.
+								<ul class="list-group">
+									<li class="list-group-item">Let the SHA256(currentBlockState) = x.</li>
+									<li class="list-group-item">Network will apply the difficulty rate, so x will become 00000000x;</li>
+									<li class="list-group-item">The idea is to look like random code, but the actual fact, it is not. It will give you the same output for a given input SHA256(input) = 00000000x;</li>
+									<li class="list-group-item">So there is not a better aproach then guessing the value of nouce combined with the state of the block to get the 00000000000x result.</li>
+								</ul>
+							</p>
+							<p>
+								<h3>Block hashcode examples</h3>
+								<ul class="list-group">
+									<li class="list-group-item">0000000000000000000fd95b95ee2488fe5489c79fcdaec09202c65ad21819e9</li>
+									<li class="list-group-item">0000000000000000000a6fd08067daa57d0c958695d3bfde80cb3742a0e3fbc2</li>
+									<li class="list-group-item">0000000000000000000510e99ca714e2464dcbda1d853e1db30a8538deb127b3</li>
+								</ul>
 							</p>
 							<div class="row">
 								<div class="col-md-2">
@@ -479,40 +496,6 @@
 											<div class="container-fluid">
 												<div class="row">
 													<div class="col-md-12">
-														 <a id="modal-898446" href="#modal-container-898446" role="button" class="btn" data-toggle="modal">Learn More</a>
-														
-														<div class="modal fade" id="modal-container-898446" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-															<div class="modal-dialog" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="myModalLabel">
-																			Current Reward for a mined Bitcoin block
-																		</h5> 
-																		<button type="button" class="close" data-dismiss="modal">
-																			<span aria-hidden="true">×</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<p class="text-justify">														
-																		The rewarding system is the source of inflation of bitcoin. Every ten minutes, the value below is created and rewared to the miner that could validate the last block before all the other miners. A miner can be a computer, or a group of computer combining resources to increase the chances of validating block before everybody else.
-																		Back in 2009, when bitcoin was created, the reward was of 50 BTC per block. After 210000 validated blocks, the reward dropped down by half. So, in 2013, the rewarding value went down from 50 BTC/Block to 25 BTC/Block. In 2016 it again dropped to 12.5 BTC/block and it will remain like this until next Halving.
-																		The process of dropping down the reward every 210000 blocks (4 years) is called Halving.
-																		Next Bitcoin Halving is going to happen in May/2020 and the reward is going down to 6.25 BTC. Because every 4 years the having happens, the inflation rate decreases in time. As the consensus protocol states that the limit is 21 millios of BTC in circulation, the last satoshi is to be mined around in the year 2140.
-																		</p>
-																		
-																	</div>
-																	<div class="modal-footer">
-																		 
-																		<button type="button" class="btn btn-secondary" data-dismiss="modal">
-																			Close
-																		</button>
-																	</div>
-																</div>
-																
-															</div>
-															
-														</div>
-														
 													</div>
 												</div>
 											</div>
@@ -526,45 +509,7 @@
 											</svg>
 											<h5 class="display-5" id="difficultyValue"></h5>
 										
-											<div class="container-fluid">
-												<div class="row">
-													<div class="col-md-12">
-															<a id="modal-898446" href="#modal-container-898446" role="button" class="btn" data-toggle="modal">Learn More</a>
-														
-														<div class="modal fade" id="modal-container-898446" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-															<div class="modal-dialog" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="myModalLabel">
-																			Difficulty Rate
-																		</h5> 
-																		<button type="button" class="close" data-dismiss="modal">
-																			<span aria-hidden="true">×</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<p class="text-justify">														
-																		The Bitcoin algorithm will adjust the difficulty rate by analising the amount of processing power in the network.
-																		The more miners (power hash providers/block validators), the more difficult (expensive) is to mine one single BTC. 
-																		The adjustment makes that time taken to validate one block is 10 minutes of average. 
-																		</p>
-																		
-																	</div>
-																	<div class="modal-footer">
-																			
-																		<button type="button" class="btn btn-secondary" data-dismiss="modal">
-																			Close
-																		</button>
-																	</div>
-																</div>
-																
-															</div>
-															
-														</div>
-														
-													</div>
-												</div>
-											</div>
+											
 												
 											
 										</div>
@@ -575,44 +520,7 @@
 												<path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
 											</svg>
 											<h5 class="display-5"><span id="weightedPriceTitle">...</span>USD</h5>
-											<div class="container-fluid">
-												<div class="row">
-													<div class="col-md-12">
-															<a id="modal-898446" href="#modal-container-898446" role="button" class="btn" data-toggle="modal">Learn More</a>
-														
-														<div class="modal fade" id="modal-container-898446" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-															<div class="modal-dialog" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="myModalLabel">
-																			Difficulty Rate
-																		</h5> 
-																		<button type="button" class="close" data-dismiss="modal">
-																			<span aria-hidden="true">×</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<p class="text-justify">														
-																		This is the average price of bitcoin in the last 24 hours operated by major exchanges around the world.
-																		Proce is in dolars.
-																		</p>
-																		
-																	</div>
-																	<div class="modal-footer">
-																			
-																		<button type="button" class="btn btn-secondary" data-dismiss="modal">
-																			Close
-																		</button>
-																	</div>
-																</div>
-																
-															</div>
-															
-														</div>
-														
-													</div>
-												</div>
-											</div>
+											
 										</div>
 									</div>
 								</div>
